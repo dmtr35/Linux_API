@@ -5,6 +5,7 @@
 #include <errno.h>
 #include "get_num.h"
 
+
 static void gnFail(const char *fname, const char *msg, const char *arg, const char *name)
 {
     fprintf(stderr, "%s error", fname);
@@ -15,6 +16,7 @@ static void gnFail(const char *fname, const char *msg, const char *arg, const ch
         fprintf(stderr, " offending text: %s\n", arg);
     exit(EXIT_FAILURE);
 }
+
 
 static long getNum(const char *fname, const char *arg, int flags, const char *name)
 {
@@ -37,10 +39,12 @@ static long getNum(const char *fname, const char *arg, int flags, const char *na
     return res;
 }
 
+
 long getLong(const char *arg, int flags, const char *name)
 {
     return getNum("getLong", arg, flags, name);
 }
+
 
 int getInt(const char *arg, int flags, const char *name)
 {

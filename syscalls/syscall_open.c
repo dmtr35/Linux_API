@@ -1,6 +1,5 @@
 #define _GNU_SOURCE
-#include <sys/stat.h>
-#include <fcntl.h>
+#include <fcntl.h>          /* open */
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
 
@@ -39,17 +38,15 @@
 
 int main()
 {
-    int fd;
-    
     /* Открытие существующего файла для чтения */
-    fd = open("startup", O_RDONLY);
+    int fd = open("startup", O_RDONLY);
     if (fd == -1)
         errExit("open");
     close(fd);
     
     /* Открытие нового или существующего файла для чтения и записи с усечением до нуля
     байтов; предоставление владельцу исключительных прав доступа на чтение и запись */
-    fd = open("myfile", O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);         /* -rw------- */
+    fd = open("myfile", O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR /* 0600 */);         /* -rw------- */
     if (fd == -1)
         errExit("open");
     close(fd);
@@ -63,12 +60,14 @@ int main()
     // =====================================================================
     
     // STDIN_FILENO, STDOUT_FILENO, STDERR_FILENO
-    // if (close(STDIN_FILENO) == -1)      /* Закрытие нулевого файлового дескриптора */
-    //     errExit("close");
+    if (close(STDIN_FILENO) == -1)      /* Закрытие нулевого файлового дескриптора */
+        errExit("close");
     
-    // fd = open("startup", O_RDONLY);     /* fd = 0 */
-    // if (fd == -1)
-    //     errExit("open");
+    fd = open("startup", O_RDONLY);     /* fd = 0 */
+    if (fd == -1)
+        errExit("open");
+
+
     return 0;
 }
 // =====================================================================
@@ -84,7 +83,8 @@ int main()
 
 
 
-
+int close(int fd);
+// Возвращает 0 при успешном завершении или –1 при ошибке
 
 
 
