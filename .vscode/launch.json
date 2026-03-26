@@ -6,7 +6,13 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/main",
-            "args": ["startup", "R"],
+
+
+            // "args": ["tfile", "s100000", "wabc"],
+            "args": ["startup"],
+            // "args": ["-a", "startup"],
+
+
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

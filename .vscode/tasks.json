@@ -10,13 +10,18 @@
                 "-D_POSIX_C_SOURCE=200809L",
                 "-g",                
                 
-                // "copy/copy.c",
+                // "test_prog/copy.c",
+                // "test_prog/seek_io.c",
+                "test_prog/tee.c",
+                // -----------------------------------
 
                 // "syscalls/syscall_open.c",
                 // "syscalls/syscall_read.c",
                 // "syscalls/syscall_write.c",
                 // "syscalls/syscall_lseek.c",
-                "syscalls/syscall_lseek_2.c",
+                // "syscalls/syscall_ioctl.c",
+                // -----------------------------------
+
 
                 "/home/dm/WebstormProjects/c/Linux_API/lib/error_function.c",
                 "/home/dm/WebstormProjects/c/Linux_API/lib/get_num.c",

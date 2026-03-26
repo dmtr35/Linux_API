@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
         switch (argv[ap][0]) {
         case 'r':                        /* Вывод байтов с позиции текущего смещения в виде текста */
         case 'R':                        /* Вывод байтов с позиции текущего смещения в виде hex-чисел */
-            printf("%d:%d\n", argv[ap][0], argv[ap][1]);
+            printf("%c:%d\n", argv[ap][0], argv[ap][1]);
             len = getLong(&argv[ap][1], GN_ANY_BASE, argv[ap]);
             buf = malloc(len);
             if (buf == NULL)
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
             if (numRead == 0) {
                 printf("%s: end-of-file\n", argv[ap]);
             } else {
-                printf("%s: ", argv[ap]);
+                printf("%s:", argv[ap]);
                 for (j = 0; j < numRead; j++) {
                     if (argv[ap][0] == 'r')
                         printf("%c", isprint((unsigned char) buf[j]) ? buf[j] : '?');
