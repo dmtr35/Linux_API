@@ -28,16 +28,12 @@ int main(int argc, char *argv[])
         errExit("open");
 
     
+    while ((num_read = read(fd_file, buffer, MAX_READ)) > 0) {
+        num_write = write(fd_copy, buffer, num_read);
+        if (num_write == -1)
+            errExit("write");
+    }
 
-    num_read = read(fd_file, buffer, MAX_READ);
-    if (num_read == -1)
-        errExit("read");
-        
-    num_write = write(fd_file, buffer, num_read);
-    if (num_write == -1)
-        errExit("write");
-
-    printf("%s\n", buffer);
-
+    
     return 0;
 }
