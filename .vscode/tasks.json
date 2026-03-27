@@ -12,7 +12,8 @@
                 
                 // "test_prog/copy.c",
                 // "test_prog/seek_io.c",
-                "test_prog/tee.c",
+                // "test_prog/tee.c",
+                "test_prog/cp.c",
                 // -----------------------------------
 
                 // "syscalls/syscall_open.c",
