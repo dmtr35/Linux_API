@@ -1,13 +1,14 @@
-#include <sys/stat.h>
 #include <fcntl.h>
-#include <ctype.h>
+#include <unistd.h>         /* read, write lseek ftruncate*/
+#include <sys/stat.h>
+#include <ctype.h>          /* isprint */
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
 
 int main(int argc, char *argv[])
 {
     size_t len;
-    off_t offset;
+    off_t offset, pos;
     int fd, ap, j;
     char *buf;
     ssize_t numRead, numWritten;
@@ -60,8 +61,9 @@ int main(int argc, char *argv[])
         case 's':
             /* Изменение файлового смещения */
             offset = getLong(&argv[ap][1], GN_ANY_BASE, argv[ap]);
-            if (lseek(fd, offset, SEEK_SET) == -1)
+            if ((pos = lseek(fd, offset, SEEK_CUR)) == -1)
                 errExit("lseek");
+            ftruncate(fd, pos);
             printf("%s: seek succeeded\n", argv[ap]);
             break;
         default:

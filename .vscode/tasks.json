@@ -10,17 +10,21 @@
                 "-D_POSIX_C_SOURCE=200809L",
                 "-g",                
                 
-                // "test_prog/copy.c",
-                // "test_prog/seek_io.c",
-                // "test_prog/tee.c",
-                "test_prog/cp.c",
+                // "prog/copy.c",
+                // "prog/seek_io.c",
+                // "prog/tee.c",
+                // "prog/cp.c",
+                // -----------------------------------
+                // "test/bad_exclusive_open.c",
+
                 // -----------------------------------
 
+                "syscalls/syscall_fcntl.c",
+                // "syscalls/syscall_ioctl.c",
+                // "syscalls/syscall_lseek.c",
                 // "syscalls/syscall_open.c",
                 // "syscalls/syscall_read.c",
                 // "syscalls/syscall_write.c",
-                // "syscalls/syscall_lseek.c",
-                // "syscalls/syscall_ioctl.c",
                 // -----------------------------------
 
 

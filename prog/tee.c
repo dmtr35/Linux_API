@@ -1,6 +1,7 @@
 #define _GNU_SOURCE
 #include <fcntl.h>      /* open */
 #include <unistd.h>     /* read write lseek */
+#include <sys/types.h>
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
 
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
             errExit("open");
     }
 
-    
+
     while((num_read = read(STDIN_FILENO, buffer, MAX_READ)) > 0) {
         num_write = write(file_fd, buffer, num_read);
         if (num_write == -1)

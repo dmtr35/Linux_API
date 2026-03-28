@@ -1,5 +1,6 @@
+#include <fcntl.h>      /* open */
+#include <unistd.h>     /* read, write */
 #include <sys/stat.h>
-#include <fcntl.h>
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
 

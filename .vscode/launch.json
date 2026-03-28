@@ -8,9 +8,9 @@
             "program": "${workspaceFolder}/main",
 
 
-            // "args": ["tfile", "s100000", "wabc"],
+            // "args": ["startup", "wA", "s50", "wB"],
             "args": ["startup", "copy_st"],
-            // "args": ["-a", "startup"],
+            // "args": ["tfile", "startup"],
 
 
             "stopAtEntry": false,
