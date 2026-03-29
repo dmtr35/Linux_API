@@ -19,12 +19,15 @@
 
                 // -----------------------------------
 
-                "syscalls/syscall_fcntl.c",
-                // "syscalls/syscall_ioctl.c",
-                // "syscalls/syscall_lseek.c",
-                // "syscalls/syscall_open.c",
-                // "syscalls/syscall_read.c",
-                // "syscalls/syscall_write.c",
+                // "syscalls/dup.c",
+                // "syscalls/fcntl.c",
+                // "syscalls/ioctl.c",
+                // "syscalls/lseek.c",
+                // "syscalls/open.c",
+                // "syscalls/pread_pwrite.c",
+                // "syscalls/read.c",
+                "syscalls/readv_writev.c",
+                // "syscalls/write.c",
                 // -----------------------------------
 
 

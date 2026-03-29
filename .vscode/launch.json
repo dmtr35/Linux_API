@@ -9,7 +9,7 @@
 
 
             // "args": ["startup", "wA", "s50", "wB"],
-            "args": ["startup", "copy_st"],
+            "args": ["startup"],
             // "args": ["tfile", "startup"],
 
 
