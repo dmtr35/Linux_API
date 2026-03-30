@@ -7,12 +7,13 @@
 #define MAX_READ 1024
 
 // фрагментированный ввод/вывод (scatter-gather I/O) !!!
+// системный вызов readv(), writev() выполняется атомарно
 
 // Возвращает количество считанных байтов, 0 при EOF или –1 при ошибке
-ssize_t readv(int fd, const struct iovec *iov, int iovcnt);
+// ssize_t readv(int fd, const struct iovec *iov, int iovcnt);
 
 // Возвращает количество записанных байтов или –1 при ошибке
-ssize_t writev(int fd, const struct iovec *iov, int iovcnt);
+// ssize_t writev(int fd, const struct iovec *iov, int iovcnt);
 
 
 int main(int argc, char *argv[])
@@ -49,8 +50,17 @@ int main(int argc, char *argv[])
     if (numRead < totRequired)
         printf("Read fewer bytes than requested\n");
         printf("total bytes requested: %ld; bytes read: %ld\n", (long) totRequired, (long) numRead);
-        
+
     exit(EXIT_SUCCESS);
 }
     
 
+// =======================================================
+
+// фрагментированный ввод-вывод по указанному смещению
+// Эти системные вызовы не меняют смещение файла !!!
+
+// Возвращает количество считанных байтов, 0 при EOF или –1 при ошибке
+ssize_t preadv(int fd, const struct iovec *iov, int iovcnt, off_t offset);
+// Возвращает количество записанных байтов или –1 при ошибке
+ssize_t pwritev(int fd, const struct iovec *iov, int iovcnt, off_t offset);

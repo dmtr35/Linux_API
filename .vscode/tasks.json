@@ -26,7 +26,8 @@
                 // "syscalls/open.c",
                 // "syscalls/pread_pwrite.c",
                 // "syscalls/read.c",
-                "syscalls/readv_writev.c",
+                // "syscalls/readv_writev.c",
+                "syscalls/truncate_ftruncate.c",
                 // "syscalls/write.c",
                 // -----------------------------------
 
