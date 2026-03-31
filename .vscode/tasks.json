@@ -24,10 +24,11 @@
                 // "syscalls/ioctl.c",
                 // "syscalls/lseek.c",
                 // "syscalls/open.c",
+                "syscalls/open64.c",
                 // "syscalls/pread_pwrite.c",
                 // "syscalls/read.c",
                 // "syscalls/readv_writev.c",
-                "syscalls/truncate_ftruncate.c",
+                // "syscalls/truncate_ftruncate.c",
                 // "syscalls/write.c",
                 // -----------------------------------
 
