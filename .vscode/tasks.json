@@ -11,7 +11,7 @@
                 "-g",                
                 
                 // "prog/copy.c",
-                // "prog/seek_io.c",
+                "prog/seek_io.c",
                 // "prog/tee.c",
                 // "prog/cp.c",
                 // -----------------------------------
@@ -23,8 +23,9 @@
                 // "syscalls/fcntl.c",
                 // "syscalls/ioctl.c",
                 // "syscalls/lseek.c",
+                // "syscalls/mkstemp_tmpfile.c",
                 // "syscalls/open.c",
-                "syscalls/open64.c",
+                // "syscalls/open64.c",
                 // "syscalls/pread_pwrite.c",
                 // "syscalls/read.c",
                 // "syscalls/readv_writev.c",
