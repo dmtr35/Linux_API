@@ -11,10 +11,14 @@
                 "-g",                
                 
                 // "prog/copy.c",
-                "prog/seek_io.c",
-                // "prog/tee.c",
                 // "prog/cp.c",
+                "prog/dup.c",
+                // "prog/dup2.c",
+                // "prog/seek_io.c",
+                // "prog/tee.c",
                 // -----------------------------------
+                // "test/append_shifting.c",
+                // "test/atomic_append.c",
                 // "test/bad_exclusive_open.c",
 
                 // -----------------------------------

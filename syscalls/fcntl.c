@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
         printf("file is writable\n");
 // ================================================================
 
-    // чтобы включить O_APPEND у открытого файла для записи в конец файла:
+    // чтобы включить O_APPEND у открытого файла для записи в конец файла (flags ^= O_APPEND; - выключить)
     flags |= O_APPEND;
     if (fcntl(fd, F_SETFL, flags) == -1)
         errExit("fcntl");

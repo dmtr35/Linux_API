@@ -8,9 +8,10 @@
             "program": "${workspaceFolder}/main",
 
 
-            "args": ["startup", "wA", "s50", "wB"],
+            // "args": ["startup", "wA", "s50", "wB"],
             // "args": ["startup"],
-            // "args": ["tfile", "startup"],
+            "args": ["startup", "100", "A", "x"],
+            // "args": ["startup2", "100", "A"],
 
 
             "stopAtEntry": false,
