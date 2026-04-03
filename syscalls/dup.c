@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     // дублирования файловых дескрипторов
     // дескриптор будет равен или больше startfd
     // fd_new = fcntl(fd, F_DUPFD, startfd);
-    fd_new = fcntl(fd, F_DUPFD_CLOEXEC, startfd); /* устанавливает фраг закрытия FD_CLOEXEC */
+    fd_new = fcntl(fd, F_DUPFD_CLOEXEC, startfd); /* устанавливает флаг закрытия FD_CLOEXEC */
 
 
     num_write = write(fd_new, buffer, strlen(buffer));
