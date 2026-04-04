@@ -15,6 +15,10 @@
 // Возвращает количество записанных байтов или –1 при ошибке
 // ssize_t writev(int fd, const struct iovec *iov, int iovcnt);
 
+// struct iovec {
+//     void *iov_base;     /* Начальный адрес буфера */
+//     size_t iov_len;     /* Количество байтов для передачи в буфер или из него */
+// };
 
 int main(int argc, char *argv[])
 {
@@ -47,10 +51,10 @@ int main(int argc, char *argv[])
     numRead = readv(fd, iov, 3);
     if (numRead == -1)
         errExit("readv");
-    if (numRead < totRequired)
+    if (numRead < totRequired) {
         printf("Read fewer bytes than requested\n");
         printf("total bytes requested: %ld; bytes read: %ld\n", (long) totRequired, (long) numRead);
-
+    }
     exit(EXIT_SUCCESS);
 }
     

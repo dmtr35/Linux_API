@@ -20,7 +20,8 @@
                 // "test/append_shifting.c",
                 // "test/atomic_append.c",
                 // "test/bad_exclusive_open.c",
-                "test/check_fds.c",
+                // "test/check_fds.c",
+                "test/readv_writev.c",
 
                 // -----------------------------------
 
