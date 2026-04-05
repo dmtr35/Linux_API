@@ -10,6 +10,10 @@
                 "-D_POSIX_C_SOURCE=200809L",
                 "-g",                
                 
+                // "process/getpid.c",
+                // "process/mem_segments.c",
+                "process/necho.c",
+                // -----------------------------------
                 // "prog/copy.c",
                 // "prog/cp.c",
                 // "prog/dup_dup2.c",
@@ -21,7 +25,7 @@
                 // "test/atomic_append.c",
                 // "test/bad_exclusive_open.c",
                 // "test/check_fds.c",
-                "test/readv_writev.c",
+                // "test/readv_writev.c",
 
                 // -----------------------------------
 
