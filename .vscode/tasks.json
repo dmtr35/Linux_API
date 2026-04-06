@@ -12,7 +12,7 @@
                 
                 // "process/getpid.c",
                 // "process/mem_segments.c",
-                "process/necho.c",
+                "process/argv_envp.c",
                 // -----------------------------------
                 // "prog/copy.c",
                 // "prog/cp.c",
