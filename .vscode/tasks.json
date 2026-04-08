@@ -10,9 +10,13 @@
                 "-D_POSIX_C_SOURCE=200809L",
                 "-g",                
                 
+                // "process/argv_envp.c",
+                // "process/env_modify.c",
+                // "process/environ.c",
                 // "process/getpid.c",
-                // "process/mem_segments.c",
-                "process/argv_envp.c",
+                "process/mem_segments.c",
+                // "process/setjmp_longjmp.c",
+                // "process/setjmp_vars.c",
                 // -----------------------------------
                 // "prog/copy.c",
                 // "prog/cp.c",
