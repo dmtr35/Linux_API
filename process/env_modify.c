@@ -12,10 +12,10 @@ int main(int argc, char *argv[])
     int j;
     char **ep;
 
-    clearenv();             /* Удаление всей среды */
+    clearenv();                                     /* Удаление всей среды */
 
     for (j = 1; j < argc; j++)
-        if (putenv(argv[j]) != 0)           // добавляем значания в среду
+        if (putenv(argv[j]) != 0)                   // добавляем значания в среду
             errExit("putenv: %s", argv[j]);
 
     if (setenv("GREET", "Hello world", 0) == -1)    // пытается добавить значение в среду
