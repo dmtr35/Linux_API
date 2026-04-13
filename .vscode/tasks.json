@@ -10,6 +10,9 @@
                 "-D_POSIX_C_SOURCE=200809L",
                 "-g",                
                 
+                "memory/brk_sbrk.c",
+                // "memory/free_and_sbrk.c",
+                // -----------------------------------
                 // "process/argv_envp.c",
                 // "process/env_modify.c",
                 // "process/environ.c",
@@ -29,7 +32,7 @@
                 // "test/atomic_append.c",
                 // "test/bad_exclusive_open.c",
                 // "test/check_fds.c",
-                "test/getenv_putenv.c",
+                // "test/getenv_putenv.c",
                 // "test/readv_writev.c",
                 // "test/wrong_longjmp.c",
 
