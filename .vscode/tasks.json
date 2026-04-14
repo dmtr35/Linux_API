@@ -10,8 +10,9 @@
                 "-D_POSIX_C_SOURCE=200809L",
                 "-g",                
                 
-                "memory/brk_sbrk.c",
+                // "memory/brk_sbrk.c",
                 // "memory/free_and_sbrk.c",
+                "memory/my_malloc.c",
                 // -----------------------------------
                 // "process/argv_envp.c",
                 // "process/env_modify.c",

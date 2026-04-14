@@ -2,14 +2,14 @@
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
 
-#define MAX_ALLOCS 1000000
+#define MAX_ALLOCS 20
 
 int main(int argc, char *argv[])
 {
     char *ptr[MAX_ALLOCS];
     int freeStep, freeMin, freeMax, blockSize, numAllocs, j;
 
-    printf("gg\n");
+    printf("start\n");
 
     if (argc < 3 || strcmp(argv[1], "--help") == 0)
         usageErr("%s num-allocs block-size [step [min [max]]]\n", argv[0]);
@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
         ptr[j] = malloc(blockSize);
         if (ptr[j] == NULL)
             errExit("malloc");
+        printf("Program break: %10p\n", sbrk(0));
     }
 
     printf("Program break is now: %10p\n", sbrk(0));
