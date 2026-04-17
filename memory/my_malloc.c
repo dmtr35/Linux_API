@@ -23,7 +23,9 @@ void *my_malloc(size_t size)
     char *heap_start = sbrk(0);
     char *heap_end = heap_start - CHUNK_SIZE;
 
-    snprintf(heap_end - 8, 3, "%d", CHUNK_SIZE);
+    printf("%02x\n", (unsigned char)heap_end[-8]);
+    snprintf(heap_end-8, 8, "%d", CHUNK_SIZE);
+    printf("%d\n", (unsigned char)heap_end-8);
 
 
 
