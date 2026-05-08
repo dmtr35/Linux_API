@@ -1,11 +1,24 @@
-#include <pwd.h>
+#include <pwd.h>            /* getpwnam, getpwuid */
+#include <grp.h>            /* getgrnam, getgrgid */
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
 
 // Извлечение записей из файла паролей
-// при успешном завершении возвращают указатель, при ошибке — NULL
-struct passwd *getpwnam(const char *name);
-struct passwd *getpwuid(uid_t uid);
+/*  при успешном завершении возвращают указатель,
+    при ошибке — NULL (не изменяя errno).
+    если NULL + errno то произошла ошибка
+*/
+struct passwd *getpwnam(const char *name);      // поиск по имени пользователя
+struct passwd *getpwuid(uid_t uid);             // поиск по идентификатору пользователя
+// -----------------------------------------------------------
+
+// Извлечение записей из файла групп
+/*  при успешном завершении возвращают указатель,
+    при ошибке — NULL
+
+*/
+struct group *getgrnam(const char *name);       // поиск по имени группы
+struct group *getgrgid(gid_t gid);              // поиск по идентификатору группы
 
 
 int main()
@@ -39,9 +52,9 @@ int main()
         "pw_shell",  pwd_getpwnam->pw_shell                 /* Оболочка входа в систему */
     );
     
-    puts("====================================================");
+    puts("===========================================================");
     struct passwd *pwd_getpwuid;
-
+    
     errno = 0;
     pwd_getpwuid = getpwuid(0);
     
@@ -49,11 +62,11 @@ int main()
     if (pwd_getpwuid == NULL) {
         if (errno == 0)
             puts("Запись не найдена");
-        else
+            else
             puts("Ошибка");
         }
-
-    printf(
+        
+        printf(
         "%-10s: %s\n"
         "%-10s: %s\n"
         "%-10s: %d\n"
@@ -69,17 +82,51 @@ int main()
         "pw_dir",    pwd_getpwuid->pw_dir,                  /* Исходный рабочий (домашний) каталог */
         "pw_shell",  pwd_getpwuid->pw_shell                 /* Оболочка входа в систему */
     );
+    puts("===========================================================");
     // ==================================================================
+    
+    struct group *gr_getgrnam;
+    
+    gr_getgrnam = getgrnam("sudo");
+    
+    printf(
+        "%-10s: %s\n"
+        "%-10s: %s\n"
+        "%-10s: %d\n",
+        "gr_name", gr_getgrnam->gr_name,        /* Имя группы */
+        "gr_passwd", gr_getgrnam->gr_passwd,    /* Зашифрованный пароль (в режиме без теневых паролей) */
+        "gr_gid", gr_getgrnam->gr_gid          /* Идентификатор группы */
+    );
+    
+    /* Массив указателей на имена участников группы, перечисленных в /etc/group, завершающийся значением NULL */
+    printf("%-10s: ", "gr_mem");
+    for (char **mem = gr_getgrnam->gr_mem; *mem != NULL; mem++)
+        printf("%s ", *mem);
+    printf("\n");
+    puts("===========================================================");
+    // ==================================================================
+    
+    struct group *gr_getgrgid;
+    
+    gr_getgrgid = getgrgid(27);
 
-
-
-
-
-
-
-
-
-
+    printf(
+        "%-10s: %s\n"
+        "%-10s: %s\n"
+        "%-10s: %d\n",
+        "gr_name", gr_getgrgid->gr_name,        /* Имя группы */
+        "gr_passwd", gr_getgrgid->gr_passwd,    /* Зашифрованный пароль (в режиме без теневых паролей) */
+        "gr_gid", gr_getgrgid->gr_gid          /* Идентификатор группы */
+    );
+    
+    /* Массив указателей на имена участников группы, перечисленных в /etc/group, завершающийся значением NULL */
+    printf("%-10s: ", "gr_mem");
+    for (char **mem = gr_getgrgid->gr_mem; *mem != NULL; mem++)
+    printf("%s ", *mem);
+    printf("\n");
+    
+    puts("===========================================================");
+    // ==================================================================
 
     return 0;
 }
