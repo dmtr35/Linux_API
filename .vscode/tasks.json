@@ -13,7 +13,9 @@
                 // "memory/brk_sbrk.c",
                 // "memory/free_and_sbrk.c",
                 // "memory/my_malloc.c",
+
                 // -----------------------------------
+
                 // "process/argv_envp.c",
                 // "process/env_modify.c",
                 // "process/environ.c",
@@ -21,14 +23,18 @@
                 // "process/mem_segments.c",
                 // "process/setjmp_longjmp.c",
                 // "process/setjmp_vars.c",
+
                 // -----------------------------------
+
                 // "prog/copy.c",
                 // "prog/cp.c",
                 // "prog/dup_dup2.c",
                 // "prog/dup2.c",
                 // "prog/seek_io.c",
                 // "prog/tee.c",
+
                 // -----------------------------------
+
                 // "test/append_shifting.c",
                 // "test/atomic_append.c",
                 // "test/bad_exclusive_open.c",
@@ -38,9 +44,7 @@
                 // "test/wrong_longjmp.c",
 
                 // -----------------------------------
-                "USER_GROUP/getpwnam_getpwuid.c",
-                // -----------------------------------
-
+                
                 // "syscalls/dup.c",
                 // "syscalls/fcntl.c",
                 // "syscalls/ioctl.c",
@@ -54,7 +58,13 @@
                 // "syscalls/truncate_ftruncate.c",
                 // "syscalls/write.c",
                 // -----------------------------------
+                
+                // "users_groups/getpwnam_getgrnam.c",
+                "users_groups/getspnam_getspent.c",
+                // "users_groups/setpwent.c",
+                // "users_groups/ugid_functions.c",
 
+                // -----------------------------------
 
                 "/home/dm/WebstormProjects/c/Linux_API/lib/error_function.c",
                 "/home/dm/WebstormProjects/c/Linux_API/lib/get_num.c",

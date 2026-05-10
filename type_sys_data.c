@@ -1,4 +1,5 @@
 #include <sys/stat.h>
+#include <sys/types.h>
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
 
