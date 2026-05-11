@@ -59,8 +59,10 @@
                 // "syscalls/write.c",
                 // -----------------------------------
                 
+                "users_groups/check_password.c",
+                // "users_groups/crypt.c",
                 // "users_groups/getpwnam_getgrnam.c",
-                "users_groups/getspnam_getspent.c",
+                // "users_groups/getspnam_getspent.c",
                 // "users_groups/setpwent.c",
                 // "users_groups/ugid_functions.c",
 
@@ -73,6 +75,7 @@
                 "${workspaceFolder}/main",
                 "-lncursesw",
                 "-pthread",
+                "-lcrypt"
                 // "--libs libnm",
             ],
             "options": {
