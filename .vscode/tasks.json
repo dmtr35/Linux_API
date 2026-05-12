@@ -16,6 +16,10 @@
 
                 // -----------------------------------
 
+                "proccred/01_info.c",
+
+                // -----------------------------------
+
                 // "process/argv_envp.c",
                 // "process/env_modify.c",
                 // "process/environ.c",
@@ -29,6 +33,7 @@
                 // "prog/copy.c",
                 // "prog/cp.c",
                 // "prog/dup_dup2.c",
+                "prog/my_getpwnam.c",
                 // "prog/dup2.c",
                 // "prog/seek_io.c",
                 // "prog/tee.c",
@@ -59,8 +64,9 @@
                 // "syscalls/write.c",
                 // -----------------------------------
                 
-                "users_groups/check_password.c",
+                // "users_groups/check_password.c",
                 // "users_groups/crypt.c",
+                // "users_groups/exercise.c",
                 // "users_groups/getpwnam_getgrnam.c",
                 // "users_groups/getspnam_getspent.c",
                 // "users_groups/setpwent.c",
