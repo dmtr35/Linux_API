@@ -10,6 +10,7 @@
 #include "get_num.h"                            /* Объявление наших функций для обработки числовых аргументов (getInt(), getLong()) */
 
 #include "error_functions.h"                    /* Объявление наших функций обработки ошибок */
+
 typedef enum { FALSE, TRUE } Boolean;
 #define min(m,n) ((m) < (n) ? (m) : (n))
 #define max(m,n) ((m) > (n) ? (m) : (n))

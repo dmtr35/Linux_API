@@ -1,5 +1,5 @@
-#ifndef TLPI_HDR_H
-#define TLPI_HDR_H
+#ifndef UGID_FUNCTIONS_H
+#define UGID_FUNCTIONS_H
 
 #include <sys/types.h>                  /* uid_t, gid_t */
 

@@ -7,12 +7,13 @@
 #include <stdlib.h>             /* malloc */
 #include <fcntl.h>              /* open */
 #include <string.h>             /* strlen */
+#include <limits.h>             /* getgroups */
 
 // #include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
 
 #define MAX_READ 64
-
+#define SG_SIZE (NGROUPS_MAX + 1)
 
 
 void printf_uid_status(pid_t pid)
@@ -63,6 +64,7 @@ int main()
 
   // ===============================================================
   /* setuid меняет id безвозвратно */
+  // printf_uid_status(pid);
   // res = setuid(1000);               // Uid:	1000	1000	1000	1000
   // res = setgid(1000);               // Gid:	1000	1000	0	    1000
   // printf_uid_status(pid);
@@ -112,20 +114,41 @@ int main()
   
   /* Извлечение реального, действительного и сохраненного установленного идентификаторов */
   // int getresuid(uid_t *ruid, uid_t *euid, uid_t *suid);
-  uid_t ruid2, euid2, suid2;
-  res = getresuid(&ruid2, &euid2, &suid2);
-  printf("Uid:  %d  %d  %d\n", ruid2, euid2, suid2);       // Uid:  1000  0  0
-  puts("-------------------------------------------");
+  // uid_t ruid2, euid2, suid2;
+  // res = getresuid(&ruid2, &euid2, &suid2);
+  // printf("Uid:  %d  %d  %d\n", ruid2, euid2, suid2);       // Uid:  1000  0  0
+  // puts("-------------------------------------------");
 
   // ===============================================================
-
-  /*  Изменение реального, действительного и сохраненного установленного идентификаторов
-    Оба при успешном завершении возвращают 0 или -1 при ошибке */
-  res = setresuid(0, 1000, 0);                              // Uid:	0	1000	0	1000
-  printf_uid_status(pid);
-
-
   
+  /*  Изменение реального, действительного и сохраненного установленного идентификаторов
+  Оба при успешном завершении возвращают 0 или -1 при ошибке */
+  // res = setresuid(0, 1000, 0);                              // Uid:	0	1000	0	1000
+  // printf_uid_status(pid);
+  
+
+
+
+
+
+  // ===============================================================
+  /*  Извлечение и изменение дополнительных групповых идентификаторов
+  Возвращает при успешном завершении количество групповых идентификаторов,
+  помещенное в grouplist, а при ошибке — -1
+  
+  grouplist можно объявить с помощью следующего выражения:
+  gid_t grouplist[NGROUPS_MAX + 1]; // NGROUPS_MAX определенна в заголовочном файле <limits.h> (/proc/sys/kernel/ngroups_max)
+  */
+  gid_t grouplist[SG_SIZE];
+  res = getgroups(SG_SIZE, grouplist);
+ 
+  printf("%s ", "Groups:");
+  for (int i = 0; i < res; ++i)
+    printf("%d ", grouplist[i]);
+  putchar('\n');
+
+
+  // ==================================================================
   // pwd = getspnam("root");
   // printf("%s\n", pwd->sp_namp);
   // sleep(30003);
