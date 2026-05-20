@@ -95,7 +95,7 @@ int main()
         "%-10s: %d\n",
         "gr_name", gr_getgrnam->gr_name,        /* Имя группы */
         "gr_passwd", gr_getgrnam->gr_passwd,    /* Зашифрованный пароль (в режиме без теневых паролей) */
-        "gr_gid", gr_getgrnam->gr_gid          /* Идентификатор группы */
+        "gr_gid", gr_getgrnam->gr_gid           /* Идентификатор группы */
     );
     
     /* Массив указателей на имена участников группы, перечисленных в /etc/group, завершающийся значением NULL */
@@ -108,7 +108,7 @@ int main()
     
     struct group *gr_getgrgid;
     
-    gr_getgrgid = getgrgid(27);
+    gr_getgrgid = getgrgid(1000);
 
     printf(
         "%-10s: %s\n"
@@ -116,13 +116,13 @@ int main()
         "%-10s: %d\n",
         "gr_name", gr_getgrgid->gr_name,        /* Имя группы */
         "gr_passwd", gr_getgrgid->gr_passwd,    /* Зашифрованный пароль (в режиме без теневых паролей) */
-        "gr_gid", gr_getgrgid->gr_gid          /* Идентификатор группы */
+        "gr_gid", gr_getgrgid->gr_gid           /* Идентификатор группы */
     );
     
     /* Массив указателей на имена участников группы, перечисленных в /etc/group, завершающийся значением NULL */
     printf("%-10s: ", "gr_mem");
     for (char **mem = gr_getgrgid->gr_mem; *mem != NULL; mem++)
-    printf("%s ", *mem);
+        printf("%s ", *mem);
     printf("\n");
     
     puts("===========================================================");

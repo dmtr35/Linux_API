@@ -7,7 +7,9 @@
 #include <stdlib.h>             /* malloc */
 #include <fcntl.h>              /* open */
 #include <string.h>             /* strlen */
-#include <limits.h>             /* getgroups */
+#include <limits.h>             /* getgroups, NGROUPS_MAX */
+#include <grp.h>                /* setgroups, initgroups */
+
 
 // #include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
 #include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
@@ -45,10 +47,30 @@ void printf_uid_status(pid_t pid)
   puts("===========================================");
 }
 
+void printf_uid_groups()
+{
+  /*  Извлечение и изменение дополнительных групповых идентификаторов
+  Возвращает при успешном завершении количество групповых идентификаторов,
+  помещенное в grouplist, а при ошибке — -1
+  
+  grouplist можно объявить с помощью следующего выражения:
+  gid_t grouplist[NGROUPS_MAX + 1]; // NGROUPS_MAX определенна в заголовочном файле <limits.h> (/proc/sys/kernel/ngroups_max)
+  */
+
+  gid_t grouplist[SG_SIZE];
+  int res = getgroups(SG_SIZE, grouplist);
+ 
+  printf("%s ", "Groups:");
+  for (int i = 0; i < res; ++i)
+    printf("%d ", grouplist[i]);
+  putchar('\n');
+}
+
 int main()
 {
   struct spwd *pwd;
   pid_t pid;
+  
   
   pid = getpid();
   // ----------------------------------------------
@@ -132,22 +154,26 @@ int main()
 
 
   // ===============================================================
-  /*  Извлечение и изменение дополнительных групповых идентификаторов
-  Возвращает при успешном завершении количество групповых идентификаторов,
-  помещенное в grouplist, а при ошибке — -1
+  // Привилегированный процесс может изменить свой набор дополнительных групповых идентификаторов
+  size_t gidsetsize = 2;
+  const gid_t grouplist2[] = {0, 27};
+  res =  setgroups(gidsetsize, grouplist2);
   
-  grouplist можно объявить с помощью следующего выражения:
-  gid_t grouplist[NGROUPS_MAX + 1]; // NGROUPS_MAX определенна в заголовочном файле <limits.h> (/proc/sys/kernel/ngroups_max)
-  */
-  gid_t grouplist[SG_SIZE];
-  res = getgroups(SG_SIZE, grouplist);
- 
-  printf("%s ", "Groups:");
-  for (int i = 0; i < res; ++i)
-    printf("%d ", grouplist[i]);
-  putchar('\n');
+
+  printf_uid_groups();                                // Groups: 0 27
+  
+  // автоматическая инициализация групп пользователя
+  initgroups("dm", 1000);
+  
+  printf_uid_groups();                                // Groups: 4 24 27 30 46 115 136 139 998 1000
+  
+  
+  
+  // ===============================================================
 
 
+  
+  
   // ==================================================================
   // pwd = getspnam("root");
   // printf("%s\n", pwd->sp_namp);

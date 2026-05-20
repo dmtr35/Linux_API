@@ -1,9 +1,10 @@
-#define _GNU_SOURCE             /* getresuid, getresgid, setresuid, setresgid */
+#define _GNU_SOURCE             /* getresuid, getresgid, setresuid, setresgid, 'setgroups, initgroups' */
 #include <unistd.h>             /* getuid, getgid, geteuid, getegid, seteuid, setegid,
                                    setreuid, setregid, getresuid, getresgid, setresuid,
                                    setresgid, getgroups */
 #include <sys/fsuid.h>          /* setfsuid, setfsgid */
 #include <sys/types.h>          /* uid_t, gid_t */
+#include <grp.h>                /* setgroups, initgroups */
 
 /* 
     В качестве альтернативы применения системных вызовов, описываемых на следующих
@@ -92,16 +93,29 @@ int setfsgid(gid_t fsgid);
 
 // ==================================================================
 /*  Извлечение и изменение дополнительных групповых идентификаторов
-    Возвращает при успешном завершении количество групповых идентификаторов,
-    помещенное в grouplist, а при ошибке — -1
+Возвращает при успешном завершении количество групповых идентификаторов,
+помещенное в grouplist, а при ошибке — -1
 
-    grouplist можно объявить с помощью следующего выражения:
-    gid_t grouplist[NGROUPS_MAX + 1]; // NGROUPS_MAX определенна в заголовочном файле <limits.h> (/proc/sys/kernel/ngroups_max)
+grouplist можно объявить с помощью следующего выражения:
+gid_t grouplist[NGROUPS_MAX + 1]; // NGROUPS_MAX определенна в заголовочном файле <limits.h> (/proc/sys/kernel/ngroups_max)
+если указать в gidsetsize 0 то grouplist не изменяется, но возвращаемое значение будет содержать количество групп
 */
 int getgroups(int gidsetsize, gid_t grouplist[]);
 
+// ==================================================================
+/*  Привилегированный процесс может изменить свой набор дополнительных групповых
+    идентификаторов, выполнив setgroups() и initgroups()
+    
+    Оба возвращают при успешном завершении 0, а при ошибке — -1 */
+    
+int setgroups(size_t gidsetsize, const gid_t *grouplist);
 
+/*  initgroups() — автоматическая инициализация групп пользователя
+    Для создания правильного group context пользователя 
 
+    инициализирует дополнительные групповые идентификаторы
+    вызывающего процесса путем сканирования файла /etc/group */
+int initgroups(const char *user, gid_t group);
 
 
 int main()
