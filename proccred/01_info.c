@@ -118,12 +118,4 @@ int setgroups(size_t gidsetsize, const gid_t *grouplist);
 int initgroups(const char *user, gid_t group);
 
 
-int main()
-{
-    pid_t pid;
-
-    pid = getpid();
-
-    return 0;
-}
 

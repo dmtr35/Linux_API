@@ -34,11 +34,12 @@ int my_initgroups(const char *user, gid_t group)
     int count = 0, res;
 
     while ((gr = getgrent()) != NULL) {
-      gr_getgrgid = getgrgid(gr->gr_gid);
-
-      for (char **mem = gr_getgrgid->gr_mem; *mem != NULL; mem++)
-        if (strcmp(user, *mem) == 0) 
+      for (char **mem = gr->gr_mem; *mem != NULL; mem++)
+        if (strcmp(user, *mem) == 0){
+          // if (gr->gr_gid == 4)
+          //   continue;
           grouplist[count++] = gr->gr_gid;
+        }
     }
 
     grouplist[count++] = getpwnam(user)->pw_gid;
@@ -46,8 +47,8 @@ int my_initgroups(const char *user, gid_t group)
     void endgrent(void);
 
     res = setgroups(count, grouplist);
+    
     // printf("%d\n", res);
-
     // printf("Groups: ");
     // for (int i = 0; i < count; ++i)
     //   printf("%d ", grouplist[i]);

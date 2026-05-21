@@ -19,8 +19,9 @@
                 // "proccred/01_info.c",
                 // "proccred/idshow.c",
                 // "proccred/idshow.c",
-                "proccred/my_initgroups.c",
+                // "proccred/my_initgroups.c",
                 // "proccred/status_uid.c",
+                // "proccred/test.c",
 
                 // -----------------------------------
 
@@ -41,18 +42,6 @@
                 // "prog/dup2.c",
                 // "prog/seek_io.c",
                 // "prog/tee.c",
-
-                // -----------------------------------
-
-                // "test/append_shifting.c",
-                // "test/atomic_append.c",
-                // "test/bad_exclusive_open.c",
-                // "test/check_fds.c",
-                // "test/getenv_putenv.c",
-                // "test/readv_writev.c",
-                // "test/uid_exercise.c",
-                // "test/wrong_longjmp.c",
-
                 // -----------------------------------
                 
                 // "syscalls/dup.c",
@@ -67,6 +56,21 @@
                 // "syscalls/readv_writev.c",
                 // "syscalls/truncate_ftruncate.c",
                 // "syscalls/write.c",
+                // -----------------------------------
+                
+                // "test/append_shifting.c",
+                // "test/atomic_append.c",
+                // "test/bad_exclusive_open.c",
+                // "test/check_fds.c",
+                // "test/getenv_putenv.c",
+                // "test/readv_writev.c",
+                // "test/uid_exercise.c",
+                // "test/wrong_longjmp.c",
+                // -----------------------------------
+
+                "time/calendar_time.c",
+                // "time/info.c",
+                // "time/time_func.c",
                 // -----------------------------------
                 
                 // "users_groups/check_password.c",
