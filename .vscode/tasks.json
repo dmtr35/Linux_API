@@ -68,9 +68,11 @@
                 // "test/wrong_longjmp.c",
                 // -----------------------------------
 
-                "time/calendar_time.c",
+                // "time/calendar_time.c",
                 // "time/info.c",
+                // "time/strtime.c",
                 // "time/time_func.c",
+                "time/time_zones.c",
                 // -----------------------------------
                 
                 // "users_groups/check_password.c",
@@ -86,6 +88,7 @@
                 "/home/dm/WebstormProjects/c/Linux_API/lib/error_function.c",
                 "/home/dm/WebstormProjects/c/Linux_API/lib/get_num.c",
                 "/home/dm/WebstormProjects/c/Linux_API/lib/ugid_functions.c",
+                "/home/dm/WebstormProjects/c/Linux_API/lib/curr_time.c",
                 
                 "-o",
                 "${workspaceFolder}/main",

@@ -43,10 +43,10 @@ int main(int argc, char *argv[])
     printf(" year=%d mon=%d mday=%d hour=%d min=%d sec=%d ", loc.tm_year, loc.tm_mon, loc.tm_mday, loc.tm_hour, loc.tm_min, loc.tm_sec);
     printf("wday=%d yday=%d isdst=%d\n\n", loc.tm_wday, loc.tm_yday, loc.tm_isdst);
 
-    printf("asctime() formats the gmtime() value as: %s", asctime(&gm));
-    printf("ctime() formats the time() value as: %s", ctime(&t));
-    printf("mktime() of gmtime() value: %ld secs\n", (long) mktime(&gm));
-    printf("mktime() of localtime() value: %ld secs\n", (long) mktime(&loc));
+    printf("asctime() formats the gmtime() value as: %s", asctime(&gm));            // Fri May 22 13:00:50 2026
+    printf("ctime() formats the time() value as: %s", ctime(&t));                   // Fri May 22 16:00:50 2026
+    printf("mktime() of gmtime() value: %ld secs\n", (long) mktime(&gm));           // 1779447650 secs
+    printf("mktime() of localtime() value: %ld secs\n", (long) mktime(&loc));       // 1779454850 secs
 
     exit(EXIT_SUCCESS);
 }
