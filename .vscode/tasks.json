@@ -68,11 +68,12 @@
                 // "test/wrong_longjmp.c",
                 // -----------------------------------
 
+                // "time/timezone/timezone.c"
+                "time/timezone/show_time.c",
                 // "time/calendar_time.c",
                 // "time/info.c",
                 // "time/strtime.c",
                 // "time/time_func.c",
-                "time/time_zones.c",
                 // -----------------------------------
                 
                 // "users_groups/check_password.c",
