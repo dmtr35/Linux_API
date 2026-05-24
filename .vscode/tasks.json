@@ -69,9 +69,10 @@
                 // -----------------------------------
 
                 // "time/timezone/timezone.c"
-                "time/timezone/show_time.c",
+                // "time/timezone/show_time.c",
                 // "time/calendar_time.c",
                 // "time/info.c",
+                "time/locale.c",
                 // "time/strtime.c",
                 // "time/time_func.c",
                 // -----------------------------------
