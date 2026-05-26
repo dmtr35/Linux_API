@@ -57,6 +57,11 @@
                 // "syscalls/truncate_ftruncate.c",
                 // "syscalls/write.c",
                 // -----------------------------------
+
+
+                "syslim/info.c",
+                // "syslim/t_sysconf.c",
+                // -----------------------------------
                 
                 // "test/append_shifting.c",
                 // "test/atomic_append.c",
@@ -68,11 +73,15 @@
                 // "test/wrong_longjmp.c",
                 // -----------------------------------
 
-                // "time/timezone/timezone.c"
+                // "time/time_proc/process_time.c",
+                // "time/time_proc/time_proc.c",
+
+                // "time/timezone/timezone.c",
                 // "time/timezone/show_time.c",
+
                 // "time/calendar_time.c",
                 // "time/info.c",
-                "time/locale.c",
+                // "time/locale.c",
                 // "time/strtime.c",
                 // "time/time_func.c",
                 // -----------------------------------
