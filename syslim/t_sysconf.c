@@ -1,4 +1,4 @@
-#include "tlpi_hdr.h"
+#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
 
 /* Выводит 'msg' плюс значение sysconf() для 'name' */
 static void sysconfPrint(const char *msg, int name)

@@ -59,8 +59,8 @@
                 // -----------------------------------
 
 
-                "syslim/info.c",
-                // "syslim/t_sysconf.c",
+                // "syslim/info.c",
+                "syslim/t_sysconf.c",
                 // -----------------------------------
                 
                 // "test/append_shifting.c",
