@@ -2,8 +2,8 @@
 #include <unistd.h>         /* read, write lseek ftruncate*/
 #include <sys/stat.h>
 #include <ctype.h>          /* isprint */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 int main(int argc, char *argv[])
 {

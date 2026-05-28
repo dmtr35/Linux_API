@@ -4,8 +4,8 @@
 #include <stdio.h>      /* printf */
 #include <stdlib.h>     /* getenv, putenv, setenv*/
 #include <errno.h>
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 
 // /proc/1508571/cmdline - хранятся аргументы процесса

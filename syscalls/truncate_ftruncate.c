@@ -1,8 +1,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 // Усечение файла или добавление нулей в конец:
 // Оба возвращают 0 при успешном завершении или –1 при ошибке

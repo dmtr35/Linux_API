@@ -1,7 +1,7 @@
 #define _GNU_SOURCE                 /* strptime */
 #include <time.h>                   /* strptime */
 #include <locale.h>                 /* setlocale */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
+#include "../lib/tlpi_hdr.h"
 #define SBUF_SIZE 1000
 
 // ./strtime "9:39:46pm 1 Feb 2011" "%I:%M:%S%p %d %b %Y"

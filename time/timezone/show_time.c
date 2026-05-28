@@ -1,7 +1,7 @@
 #include <time.h>
 #include <locale.h>
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/curr_time.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
+#include "../lib/curr_time.h"
+#include "../lib/tlpi_hdr.h"
 
 #define BUF_SIZE 200
 

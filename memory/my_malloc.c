@@ -4,8 +4,8 @@
 #include <unistd.h>     /* brk, sbrk*/
 #include <stdlib.h>     /* malloc, calloc, realloc, free, posix_memalign */
 
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 #define CHUNK_SIZE 20950
 // int brk(void *end_data_segment);

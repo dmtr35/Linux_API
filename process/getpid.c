@@ -1,8 +1,8 @@
 #include <fcntl.h>      /* open */
 #include <unistd.h>     /* getpid getppid*/
 #include <stdio.h>      /* printf */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 // Всегда успешно возвращает идентификатор вызывающего процесса
 pid_t getpid(void);

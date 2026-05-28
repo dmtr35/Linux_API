@@ -5,9 +5,9 @@
 #include <stdlib.h>
 
 
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/ugid_functions.h"        /* Объявление определяемых здесь функций */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "ugid_functions.h"        /* Объявление определяемых здесь функций */
+#include "tlpi_hdr.h"
+#include "error_functions.h"
 
 
 /* Возвращает имя, соответствующее 'uid', или NULL при ошибке */

@@ -6,8 +6,8 @@
 #include <malloc.h>     /* memalign */
 
 #include <alloca.h>     /* alloca */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 /*  Инициализированные данные (.data)
     int x = 10;             -> глобальные с ИНИЦИАЛИЗАЦИЕЙ

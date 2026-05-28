@@ -67,4 +67,4 @@ int main()
     return 0;
 }
 
-// gcc my_initgroups.c /home/dm/WebstormProjects/c/Linux_API/lib/error_function.c -o my_initgroups && sudo chown root my_initgroups && sudo chmod u+s my_initgroups && ./my_initgroups
+// gcc my_initgroups.c ../lib/error_function.c -o my_initgroups && sudo chown root my_initgroups && sudo chmod u+s my_initgroups && ./my_initgroups

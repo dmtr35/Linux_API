@@ -27,4 +27,4 @@ int main()
     return 0;
 }
 
-// gcc test.c /home/dm/WebstormProjects/c/Linux_API/lib/error_function.c -o test && sudo chown root test && sudo chmod u+s test && ./test
+// gcc test.c ../lib/error_function.c -o test && sudo chown root test && sudo chmod u+s test && ./test

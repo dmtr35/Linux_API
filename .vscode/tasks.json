@@ -58,9 +58,13 @@
                 // "syscalls/write.c",
                 // -----------------------------------
 
+                // "sysinfo/info.c",
+                "sysinfo/procfs_pidmax.c",
 
+                // -----------------------------------
                 // "syslim/info.c",
-                "syslim/t_sysconf.c",
+                // "syslim/t_fpathconf.c",
+                // "syslim/t_sysconf.c",
                 // -----------------------------------
                 
                 // "test/append_shifting.c",
@@ -96,10 +100,10 @@
 
                 // -----------------------------------
 
-                "/home/dm/WebstormProjects/c/Linux_API/lib/error_function.c",
-                "/home/dm/WebstormProjects/c/Linux_API/lib/get_num.c",
-                "/home/dm/WebstormProjects/c/Linux_API/lib/ugid_functions.c",
-                "/home/dm/WebstormProjects/c/Linux_API/lib/curr_time.c",
+                "lib/error_function.c",
+                "lib/get_num.c",
+                "lib/ugid_functions.c",
+                "lib/curr_time.c",
                 
                 "-o",
                 "${workspaceFolder}/main",

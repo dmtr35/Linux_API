@@ -4,8 +4,8 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"         
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/ugid_functions.h"       /* userNameFromId() и groupNameFromId() */
+#include "../lib/tlpi_hdr.h"         
+#include "../lib/ugid_functions.h"       /* userNameFromId() и groupNameFromId() */
 
 #define SG_SIZE (NGROUPS_MAX + 1)
 

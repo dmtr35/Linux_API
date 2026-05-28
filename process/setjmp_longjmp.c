@@ -1,6 +1,6 @@
 #include <setjmp.h>         /* setjmp, longjmp */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 
 // Возвращает 0 при первом вызове, ненулевое значение при возвращении через longjmp()

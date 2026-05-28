@@ -1,8 +1,8 @@
 #define _GNU_SOURCE
 #include <fcntl.h>              /* open */
 #include <unistd.h>             /* pread pwrite */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 #define MAX_READ 1024
 
 // вызовы pread, pwriteне изменяют файлового смещения !!!

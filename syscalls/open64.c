@@ -1,8 +1,8 @@
 #define _LARGEFILE64_SOURCE     /* off64_t */
 #include <sys/stat.h>           /* S_IRUSR | S_IWUSR */
 #include <fcntl.h>              /* off_t */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 // для систем x32, работа с файлами больше 2Гб
 /* компиляция с макрос _FILE_OFFSET_BITS

@@ -1,7 +1,7 @@
 #include <fcntl.h>
 #include <string.h>             /* strlen */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 #define MAX_READ 1024
 

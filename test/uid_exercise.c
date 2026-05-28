@@ -6,7 +6,7 @@
 #include <sys/types.h>          /* uid_t, gid_t */
 #include <stdio.h>              /* printf */
 #include <shadow.h>
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
+#include "../lib/tlpi_hdr.h"
 
 void printf_uid(void)
 {

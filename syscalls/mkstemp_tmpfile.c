@@ -1,8 +1,8 @@
 #define _GNU_SOURCE
 // #include <fcntl.h>          /* open */
 #include <stdlib.h>         /* mkstemp */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 // При успешном завершении возвращает новый файловый дескриптор, а при ошибке выдает –1
 int mkstemp(char *template);

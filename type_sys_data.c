@@ -1,7 +1,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "lib/tlpi_hdr.h"
+#include "lib/error_functions.h"
 
 // Тип данных              Требование к типу в SUSv3                                       Описание
 // blkcnt_t                Целое число со знаком                                           Количество блоков файла

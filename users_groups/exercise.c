@@ -3,7 +3,7 @@
 #include <limits.h>
 #include <pwd.h>
 #include <shadow.h>
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
+#include "../lib/tlpi_hdr.h"
 
 
 

@@ -3,8 +3,8 @@
 #include <stdio.h>              /* printf */
 #include <limits.h>
 
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 // Извлечение в ходе выполнения программы значений ограничений (и возможностей) системы
 /*  _SC_* → sysconf()
@@ -115,10 +115,10 @@ int main()
         63034
         dm@y510p:$ getconf STREAM_MAX
         16
-        dm@y510p:f NAME_MAX /
+        dm@y510p:$ getconf NAME_MAX /
         255
-        dm@y510p:f PATH_MAX /
+        dm@y510p:$ getconf PATH_MAX /
         4096
-        dm@y510pf PIPE_BUF /
+        dm@y510p:$ getconf PIPE_BUF /
         4096
 */

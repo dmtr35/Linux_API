@@ -2,7 +2,7 @@
 #include <time.h>               /* time, ctime, gmtime, localtime, mktime, asctime */
 #include <sys/time.h>           /* gettimeofday */
 #include <stdio.h>              /* printf */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
+#include "../lib/tlpi_hdr.h"
 
 #define SECONDS_IN_TROPICAL_YEAR (365.24219 * 24 * 60 * 60)
 

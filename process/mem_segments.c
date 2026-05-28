@@ -2,8 +2,8 @@
 #include <unistd.h>     /* getpid getppid*/
 #include <stdio.h>      /* printf */
 #include <stdlib.h>
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 
 char globBuf[65536];                        /* Сегмент неинициализированных данных */

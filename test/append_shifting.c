@@ -1,6 +1,6 @@
 #include <fcntl.h>                  /* open */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 int fcntl(int fd, int cmd, ...);
 // F_GETFL - извлечение флагов режима доступа и состояния открытого файла

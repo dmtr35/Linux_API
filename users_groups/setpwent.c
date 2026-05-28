@@ -6,9 +6,9 @@
 // #include <stdlib.h>
 
 
-// #include "/home/dm/WebstormProjects/c/Linux_API/lib/ugid_functions.h"        /* Объявление определяемых здесь функций */
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/tlpi_hdr.h"
-#include "/home/dm/WebstormProjects/c/Linux_API/lib/error_functions.h"
+// #include "../lib/ugid_functions.h"        /* Объявление определяемых здесь функций */
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"
 
 // Возвращает указатель при успешном завершении или NULL в случае конца потока или при ошибке
 /* поочередно возвращает записи из файла паролей, выдавая NULL,
