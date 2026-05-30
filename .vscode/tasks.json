@@ -59,7 +59,8 @@
                 // -----------------------------------
 
                 // "sysinfo/info.c",
-                "sysinfo/procfs_pidmax.c",
+                // "sysinfo/procfs_pidmax.c",
+                "sysinfo/uname.c",
 
                 // -----------------------------------
                 // "syslim/info.c",

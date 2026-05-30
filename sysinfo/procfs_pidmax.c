@@ -1,4 +1,4 @@
-#include <fcntl.h>              /* open */
+#include <fcntl.h>              /* open, O_RDWR, O_RDONLY */
 #include "../lib/tlpi_hdr.h"
 
 #define MAX_LINE 100
@@ -18,15 +18,17 @@ int main(int argc, char *argv[])
     n = read(fd, line, MAX_LINE);
     if (n == -1)
         errExit("read");
-    
+    lseek(fd, 0, SEEK_SET);
+
     if (argc > 1)
         printf("Old value: ");
     printf("%.*s", (int) n, line);
-        
+    
     if (argc > 1) {
         if (write(fd, argv[1], strlen(argv[1])) != strlen(argv[1]))
             fatal("write() failed");
-        system("echo /proc/sys/kernel/pid_max now contains " "'cat /proc/sys/kernel/pid_max'");
+
+        system("echo /proc/sys/kernel/pid_max now contains `cat /proc/sys/kernel/pid_max`");
     }
 
     exit(EXIT_SUCCESS);

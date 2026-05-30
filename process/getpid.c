@@ -1,4 +1,4 @@
-#include <fcntl.h>      /* open */
+#include <fcntl.h>      /* open, pid_t */
 #include <unistd.h>     /* getpid getppid*/
 #include <stdio.h>      /* printf */
 #include "../lib/tlpi_hdr.h"
