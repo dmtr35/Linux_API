@@ -1,7 +1,7 @@
 #include <stdio.h>                      /* printf, snprintf */
 #include <dirent.h>                     /* opendir, readdir */
 #include <stdlib.h>                     /* strtol */
-#include <string.h>                     /* strlen */
+#include <string.h>                     /* strncmp */
 #include "../lib/ugid_functions.h"      /* userIdFromName */
 #include "../lib/error_functions.h"      /* err */
 
@@ -15,20 +15,25 @@ DIR *opendir(const char *dirpath);
 следующую запись каталога, или NULL при достижении конца каталога или при ошибке */
 struct dirent *readdir(DIR *dirp);
 
-#define MAX_READ 64
-#define MAX_NAME 64
 
+/* 
+    Программа принимает имя пользователя в качестве аргумента командной строки.
+    С помощью userIdFromName() получает UID указанного пользователя,
+    используя opendir() и readdir() обходит каталог /proc,
+    анализирует строки Name: и Uid: в файлах /proc/PID/status и выводит список PID
+    и имен команд процессов, принадлежащих этому пользователю
+*/
+
+#define MAX_READ 64
 
 int main(int argc, char *argv[])
 {
-    int PID;
     uid_t user_uid;
     DIR *info_dir;
     struct dirent *dirent;
     char *endptr;
     char *user_name = argv[1];
     char *dirpath = "/proc";
-    char bf4[10];
 
     user_uid = userIdFromName(user_name);
     if (user_uid == -1)
@@ -39,7 +44,7 @@ int main(int argc, char *argv[])
     
     
     while(dirent = readdir(info_dir)) {
-        if ((PID = strtol(dirent->d_name, &endptr, 0)) > 0 && !strlen(endptr)) {
+        if ((strtol(dirent->d_name, &endptr, 0)) > 0 && !strlen(endptr)) {
             FILE *fp;
             char buffer[MAX_READ];
             char *PID = dirent->d_name;
@@ -53,27 +58,30 @@ int main(int argc, char *argv[])
             
             fp = fopen(path_status, "r");
             if (fp == NULL) {
-              errExit("fopen");
+                free(path_status);
+                break;;
             }
 
             char name[MAX_READ];
-            char uid[MAX_READ];
-            while (fgets(buffer, MAX_READ - 1, fp) != NULL) {
-
-                if (strstr(buffer, "Name") != NULL) {
+            while(fgets(buffer, MAX_READ - 1, fp) != NULL) {
+                if (strncmp(buffer, "Name:", 5) == 0) {
                     strcpy(name, buffer + 6);
-                } else if (strstr(buffer, "Uid") != NULL) {
-                    strcpy(uid, buffer + 5);
-                    char *end = strchr(uid, '\t');
-                    end[0] = '\0';
+                    name[strcspn(name, "\n")] = '\0';
+                } else if (strncmp(buffer, "Uid:", 4) == 0) {
+                    uid_t proc_uid;
+                    sscanf(buffer, "Uid:\t%u", &proc_uid);
+
+                    if (proc_uid == user_uid) {
+                        printf("%s: %s\n", PID, name);
+                        continue;
+                    } else {
+                        continue;
+                    }
                 }
-                if (strtol(uid, &endptr, 0) == user_uid)
-                    printf("%s: %s", PID, name);
-            }    
-            
+            }
+            free(path_status);
+            fclose(fp);
         }
     }
-    
-
     return 0;
 }
