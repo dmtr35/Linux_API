@@ -32,8 +32,11 @@ int main(int argc, char *argv[])
     DIR *info_dir;
     struct dirent *dirent;
     char *endptr;
-    char *user_name = argv[1];
     char *dirpath = "/proc";
+
+    if (argc < 2)
+        return 1;
+    char *user_name = argv[1];
 
     user_uid = userIdFromName(user_name);
     if (user_uid == -1)

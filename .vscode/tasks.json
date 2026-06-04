@@ -59,9 +59,10 @@
                 // -----------------------------------
 
                 // "sysinfo/info.c",
-                // "sysinfo/proc_user.c",
                 // "sysinfo/procfs_pidmax.c",
-                "sysinfo/pstree.c",
+                // "sysinfo/prog1_proc_user.c",
+                // "sysinfo/prog2_pstree.c",
+                "sysinfo/prog3_procfind.c",
                 // "sysinfo/uname.c",
 
                 // -----------------------------------

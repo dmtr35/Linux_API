@@ -2,8 +2,8 @@
 #include <dirent.h>                     /* opendir, readdir */
 #include <stdlib.h>                     /* strtol */
 #include <string.h>                     /* strncmp */
-#include "../lib/ugid_functions.h"      /* userIdFromName */
-#include "../lib/error_functions.h"      /* err */
+#include "../lib/tlpi_hdr.h"
+#include "../lib/error_functions.h"     /* err */
 
 #define MAX_READ 64
 
