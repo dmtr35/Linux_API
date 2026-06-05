@@ -10,28 +10,28 @@
                 "-D_POSIX_C_SOURCE=200809L",
                 "-g",                
                 
-                // "memory/brk_sbrk.c",
-                // "memory/free_and_sbrk.c",
-                // "memory/my_malloc.c",
+                // "07_memalloc/brk_sbrk.c",
+                // "07_memalloc/free_and_sbrk.c",
+                // "07_memalloc/my_malloc.c",
 
                 // -----------------------------------
 
-                // "proccred/01_info.c",
-                // "proccred/idshow.c",
-                // "proccred/idshow.c",
-                // "proccred/my_initgroups.c",
-                // "proccred/status_uid.c",
-                // "proccred/test.c",
+                // "09_proccred/01_info.c",
+                // "09_proccred/idshow.c",
+                // "09_proccred/idshow.c",
+                // "09_proccred/my_initgroups.c",
+                // "09_proccred/status_uid.c",
+                // "09_proccred/test.c",
 
                 // -----------------------------------
 
-                // "process/argv_envp.c",
-                // "process/env_modify.c",
-                // "process/environ.c",
-                // "process/getpid.c",
-                // "process/mem_segments.c",
-                // "process/setjmp_longjmp.c",
-                // "process/setjmp_vars.c",
+                // "06_proc/argv_envp.c",
+                // "06_proc/env_modify.c",
+                // "06_proc/environ.c",
+                // "06_proc/getpid.c",
+                // "06_proc/mem_segments.c",
+                // "06_proc/setjmp_longjmp.c",
+                // "06_proc/setjmp_vars.c",
 
                 // -----------------------------------
 
@@ -44,31 +44,31 @@
                 // "prog/tee.c",
                 // -----------------------------------
                 
-                // "syscalls/dup.c",
-                // "syscalls/fcntl.c",
-                // "syscalls/ioctl.c",
-                // "syscalls/lseek.c",
-                // "syscalls/mkstemp_tmpfile.c",
-                // "syscalls/open.c",
-                // "syscalls/open64.c",
-                // "syscalls/pread_pwrite.c",
-                // "syscalls/read.c",
-                // "syscalls/readv_writev.c",
-                // "syscalls/truncate_ftruncate.c",
-                // "syscalls/write.c",
+                // "04_fileio/dup.c",
+                // "04_fileio/fcntl.c",
+                // "04_fileio/ioctl.c",
+                // "04_fileio/lseek.c",
+                // "04_fileio/mkstemp_tmpfile.c",
+                // "04_fileio/open.c",
+                // "04_fileio/open64.c",
+                // "04_fileio/pread_pwrite.c",
+                // "04_fileio/read.c",
+                // "04_fileio/readv_writev.c",
+                // "04_fileio/truncate_ftruncate.c",
+                // "04_fileio/write.c",
                 // -----------------------------------
 
-                // "sysinfo/info.c",
-                // "sysinfo/procfs_pidmax.c",
-                // "sysinfo/prog1_proc_user.c",
-                // "sysinfo/prog2_pstree.c",
-                "sysinfo/prog3_procfind.c",
-                // "sysinfo/uname.c",
+                // "12_sysinfo/00_info.c",
+                // "12_sysinfo/procfs_pidmax.c",
+                // "12_sysinfo/prog1_proc_user.c",
+                // "12_sysinfo/prog2_pstree.c",
+                "12_sysinfo/prog3_procfind.c",
+                // "12_sysinfo/uname.c",
 
                 // -----------------------------------
-                // "syslim/info.c",
-                // "syslim/t_fpathconf.c",
-                // "syslim/t_sysconf.c",
+                // "11_syslim/00_info.c",
+                // "11_syslim/t_fpathconf.c",
+                // "11_syslim/t_sysconf.c",
                 // -----------------------------------
                 
                 // "test/append_shifting.c",
@@ -81,26 +81,26 @@
                 // "test/wrong_longjmp.c",
                 // -----------------------------------
 
-                // "time/time_proc/process_time.c",
-                // "time/time_proc/time_proc.c",
+                // "10_time/time_proc/process_time.c",
+                // "10_time/time_proc/time_proc.c",
 
-                // "time/timezone/timezone.c",
-                // "time/timezone/show_time.c",
+                // "10_time/timezone/timezone.c",
+                // "10_time/timezone/show_time.c",
 
-                // "time/calendar_time.c",
-                // "time/info.c",
-                // "time/locale.c",
-                // "time/strtime.c",
-                // "time/time_func.c",
+                // "10_time/calendar_time.c",
+                // "10_time/00_info.c",
+                // "10_time/locale.c",
+                // "10_time/strtime.c",
+                // "10_time/time_func.c",
                 // -----------------------------------
                 
-                // "users_groups/check_password.c",
-                // "users_groups/crypt.c",
-                // "users_groups/exercise.c",
-                // "users_groups/getpwnam_getgrnam.c",
-                // "users_groups/getspnam_getspent.c",
-                // "users_groups/setpwent.c",
-                // "users_groups/ugid_example.c",
+                // "08_users_groups/check_password.c",
+                // "08_users_groups/crypt.c",
+                // "08_users_groups/exercise.c",
+                // "08_users_groups/getpwnam_getgrnam.c",
+                // "08_users_groups/getspnam_getspent.c",
+                // "08_users_groups/setpwent.c",
+                // "08_users_groups/ugid_example.c",
 
                 // -----------------------------------
 
