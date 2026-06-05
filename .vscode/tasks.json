@@ -10,40 +10,8 @@
                 "-D_POSIX_C_SOURCE=200809L",
                 "-g",                
                 
-                // "07_memalloc/brk_sbrk.c",
-                // "07_memalloc/free_and_sbrk.c",
-                // "07_memalloc/my_malloc.c",
-
                 // -----------------------------------
 
-                // "09_proccred/01_info.c",
-                // "09_proccred/idshow.c",
-                // "09_proccred/idshow.c",
-                // "09_proccred/my_initgroups.c",
-                // "09_proccred/status_uid.c",
-                // "09_proccred/test.c",
-
-                // -----------------------------------
-
-                // "06_proc/argv_envp.c",
-                // "06_proc/env_modify.c",
-                // "06_proc/environ.c",
-                // "06_proc/getpid.c",
-                // "06_proc/mem_segments.c",
-                // "06_proc/setjmp_longjmp.c",
-                // "06_proc/setjmp_vars.c",
-
-                // -----------------------------------
-
-                // "prog/copy.c",
-                // "prog/cp.c",
-                // "prog/dup_dup2.c",
-                // "prog/my_getpwnam.c",
-                // "prog/dup2.c",
-                // "prog/seek_io.c",
-                // "prog/tee.c",
-                // -----------------------------------
-                
                 // "04_fileio/dup.c",
                 // "04_fileio/fcntl.c",
                 // "04_fileio/ioctl.c",
@@ -56,19 +24,84 @@
                 // "04_fileio/readv_writev.c",
                 // "04_fileio/truncate_ftruncate.c",
                 // "04_fileio/write.c",
+
+                // -----------------------------------
+
+                // "06_proc/argv_envp.c",
+                // "06_proc/env_modify.c",
+                // "06_proc/environ.c",
+                // "06_proc/getpid.c",
+                // "06_proc/mem_segments.c",
+                // "06_proc/setjmp_longjmp.c",
+                // "06_proc/setjmp_vars.c",
+                
+                // -----------------------------------
+                
+                // "07_memalloc/brk_sbrk.c",
+                // "07_memalloc/free_and_sbrk.c",
+                // "07_memalloc/my_malloc.c",
+                
+                // -----------------------------------
+
+                // "08_users_groups/check_password.c",
+                // "08_users_groups/crypt.c",
+                // "08_users_groups/exercise.c",
+                // "08_users_groups/getpwnam_getgrnam.c",
+                // "08_users_groups/getspnam_getspent.c",
+                // "08_users_groups/setpwent.c",
+                // "08_users_groups/ugid_example.c",
+
+                // -----------------------------------
+
+                // "09_proccred/01_info.c",
+                // "09_proccred/idshow.c",
+                // "09_proccred/idshow.c",
+                // "09_proccred/my_initgroups.c",
+                // "09_proccred/status_uid.c",
+                // "09_proccred/test.c",
+
+                // -----------------------------------
+                
+                // "10_time/time_proc/process_time.c",
+                // "10_time/time_proc/time_proc.c",
+                // "10_time/timezone/timezone.c",
+                // "10_time/timezone/show_time.c",
+                // "10_time/calendar_time.c",
+                // "10_time/00_info.c",
+                // "10_time/locale.c",
+                // "10_time/strtime.c",
+                // "10_time/time_func.c",
+
+                // -----------------------------------
+                
+                // "11_syslim/00_info.c",
+                // "11_syslim/t_fpathconf.c",
+                // "11_syslim/t_sysconf.c",
+                
                 // -----------------------------------
 
                 // "12_sysinfo/00_info.c",
                 // "12_sysinfo/procfs_pidmax.c",
                 // "12_sysinfo/prog1_proc_user.c",
                 // "12_sysinfo/prog2_pstree.c",
-                "12_sysinfo/prog3_procfind.c",
+                // "12_sysinfo/prog3_procfind.c",
                 // "12_sysinfo/uname.c",
-
+                
                 // -----------------------------------
-                // "11_syslim/00_info.c",
-                // "11_syslim/t_fpathconf.c",
-                // "11_syslim/t_sysconf.c",
+                
+                "13_filebuff/00_info.c",
+                // "13_filebuff/direct_read.c",
+                
+                // -----------------------------------
+
+                // "prog/copy.c",
+                // "prog/cp.c",
+                // "prog/dup_dup2.c",
+                // "prog/my_getpwnam.c",
+                // "prog/dup2.c",
+                // "prog/seek_io.c",
+                // "prog/tee.c",
+
                 // -----------------------------------
                 
                 // "test/append_shifting.c",
@@ -81,28 +114,7 @@
                 // "test/wrong_longjmp.c",
                 // -----------------------------------
 
-                // "10_time/time_proc/process_time.c",
-                // "10_time/time_proc/time_proc.c",
-
-                // "10_time/timezone/timezone.c",
-                // "10_time/timezone/show_time.c",
-
-                // "10_time/calendar_time.c",
-                // "10_time/00_info.c",
-                // "10_time/locale.c",
-                // "10_time/strtime.c",
-                // "10_time/time_func.c",
-                // -----------------------------------
                 
-                // "08_users_groups/check_password.c",
-                // "08_users_groups/crypt.c",
-                // "08_users_groups/exercise.c",
-                // "08_users_groups/getpwnam_getgrnam.c",
-                // "08_users_groups/getspnam_getspent.c",
-                // "08_users_groups/setpwent.c",
-                // "08_users_groups/ugid_example.c",
-
-                // -----------------------------------
 
                 "lib/error_function.c",
                 "lib/get_num.c",

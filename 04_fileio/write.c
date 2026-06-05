@@ -1,6 +1,6 @@
 #define _GNU_SOURCE
 #include <fcntl.h>              /* open */
-#include <unistd.h>             /* read */
+#include <unistd.h>             /* read, write */
 #include "../lib/tlpi_hdr.h"
 #include "../lib/error_functions.h"
 
