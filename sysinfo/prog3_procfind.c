@@ -3,8 +3,13 @@
 #include <dirent.h>                     /* opendir, readdir */
 #include <stdlib.h>                     /* strtol */
 #include <string.h>                     /* strncmp */
+#include <ctype.h>                      /* isdigit */
 #include "../lib/tlpi_hdr.h"
 #include "../lib/error_functions.h"     /* err */
+
+
+//  Программа выводит список всех процессов, у которых имеется открытый файл с указанным путевым именем!
+
 
 //  Возвращает количество байтов, помещенных в массиве buffer, при успешном завершении или -1 при ошибке
 /*  Извлечь содержимое самой ссылки, то есть имя пути, с которым она соотносится
@@ -54,25 +59,39 @@ int main(int argc, char *argv[])
             
             char *path_pid_fd = malloc(size_path_pid_fd);
             if (path_pid_fd == NULL)
-            errExit("malloc");
+                errExit("malloc");
             
             snprintf(path_pid_fd, size_path_pid_fd, "%s/%s/fd", dirpath, PID);
             
-            if ((info_dir_fd = opendir(path_pid_fd)) == NULL)
+            if ((info_dir_fd = opendir(path_pid_fd)) == NULL){
+                free(path_pid_fd);
                 continue;
-
-            while ((dirent_fd = readdir(info_dir_fd)) == NULL) {
-                char *fd = dirent_fd->d_name;
-                printf("%s\n", fd);
-                // res = readlink(path_pid_fd, buffer, MAX_READ);
-                // printf("res: %zu, buffer: %s\n", );
             }
 
+            while (dirent_fd = readdir(info_dir_fd)) {
+                if (isdigit(dirent_fd->d_name[0])) {
+                    char *fd = dirent_fd->d_name;
+                    size_t path_to_fd_size = strlen(path_pid_fd) + 1 + strlen(fd) + 1;
 
+                    char *path_to_fd = malloc(path_to_fd_size);
+                    snprintf(path_to_fd, path_to_fd_size, "%s/%s", path_pid_fd, fd);
 
+                    res = readlink(path_to_fd, buffer, MAX_READ - 1);
+                    if (res == -1)
+                        continue;
+
+                    buffer[res] = '\0';
+
+                    if (strcmp(buffer, file_path) == 0)
+                        printf("%s -> %s\n", path_to_fd, buffer);
+
+                    free(path_to_fd);
+                }
+            }
+            closedir(info_dir_fd);
         }
     }
-
+    closedir(info_dir);
 
     return 0;
 }
