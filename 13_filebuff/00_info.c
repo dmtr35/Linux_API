@@ -83,8 +83,9 @@ int main(int argc, char *argv[])
     fflush(stdout);                                         /* или fflush(NULL); для всех буферов stdio, которые связаны с потоками вывода */
 
     // ==================================================
+    printf("msg4");
+    printf("\n");
 
 
-    
     return 0;
 }
