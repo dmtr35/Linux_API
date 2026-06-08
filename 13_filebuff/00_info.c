@@ -40,18 +40,51 @@ int fflush(FILE *stream);
 
 #define BUF_SIZE 1024
 static char buf[BUF_SIZE];
+static char buf2[BUFSIZ];
 
 int main(int argc, char *argv[])
 {
     // int fd;
     // fd = open("startup", O_WRONLY);
     // write(fd, "abc", 3);
-    // =========================================
+    // ==================================================
 
-    if (setvbuf(stdout, buf, _IOFBF, BUF_SIZE) != 0)
+    if (setvbuf(stdout, NULL, _IONBF, 0) != 0)              // отключили буферизацию и сообщение выводится сразу
         errExit("setvbuf");
+    printf("msg");
+    printf("\n");
+
+    if (setvbuf(stdout, buf, _IOFBF, BUF_SIZE) != 0)        // включаем буферизацию
+        errExit("setvbuf");
+    printf("msg");
+    printf("\n");
+    // ==================================================
+
+    setbuf(stdout, NULL);                                   // отключили буферизацию
+    printf("msg2");
+    printf("\n");
+
+    setbuf(stdout, buf2);                                   // включаем буферизацию
+    printf("msg2");
+    printf("\n");
+
+    // ==================================================
+
+    setbuffer(stdout, NULL, 0);                             // отключили буферизацию
+    printf("msg3");
+    printf("\n");
+
+    setbuffer(stdout, buf, BUF_SIZE);                       // включаем буферизацию
+    printf("msg3");
+    printf("\n");
+
+    // ==================================================
+
+    fflush(stdout);                                         /* или fflush(NULL); для всех буферов stdio, которые связаны с потоками вывода */
+
+    // ==================================================
+
+
     
-
-
     return 0;
 }
