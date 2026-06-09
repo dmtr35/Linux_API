@@ -1,8 +1,8 @@
-#define _GNU_SOURCE     /* program_invocation_name, program_invocation_short_name */
-#include <fcntl.h>      /* open */
-#include <unistd.h>     /* getpid, getppid*/
-#include <stdio.h>      /* printf */
-#include <stdlib.h>     /* getenv, putenv, setenv*/
+#define _GNU_SOURCE                     /* program_invocation_name, program_invocation_short_name */
+#include <fcntl.h>                      /* open */
+#include <unistd.h>                     /* getpid, getppid, STDOUT_FILENO*/
+#include <stdio.h>                      /* printf */
+#include <stdlib.h>                     /* getenv, putenv, setenv*/
 #include <errno.h>
 #include "../lib/tlpi_hdr.h"
 #include "../lib/error_functions.h"

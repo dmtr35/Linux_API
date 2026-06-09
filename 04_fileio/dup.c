@@ -1,7 +1,7 @@
 #define _GNU_SOURCE
 #include <fcntl.h>
-#include <unistd.h>             /* dup */
-#include <string.h>             /* strlen */
+#include <unistd.h>                         /* dup, STDIN_FILENO, STDOUT_FILENO, STDERR_FILENO */
+#include <string.h>                         /* strlen */
 #include "../lib/tlpi_hdr.h"
 #include "../lib/error_functions.h"
 

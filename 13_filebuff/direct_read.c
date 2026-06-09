@@ -3,6 +3,21 @@
 #include <malloc.h>
 #include "../lib/tlpi_hdr.h"
 
+/*
+    Программа выделяет блок памяти, который выровнен по адресу, кратному
+    ее первому аргументу, и для этого использует функцию memalign().
+
+    $ ./direct_read test.txt 512                    Считывание 512 байт со смещения 0
+    Read 512 bytes                                  Успешно
+    $ ./direct_read test.txt 256
+    ERROR [EINVAL Invalid argument] read            Длина не кратна 512
+    $ ./direct_read test.txt 512 1
+    ERROR [EINVAL Invalid argument] read            Смещение не кратно 512
+    $ ./direct_read test.txt 4096 8192 512
+    Read 4096 bytes                                 Успешно
+    $ ./direct_read test.txt 4096 512 256
+    ERROR [EINVAL Invalid argument] read            Выравнивание не кратно 512
+*/
 int main(int argc, char *argv[])
 {
     int fd;

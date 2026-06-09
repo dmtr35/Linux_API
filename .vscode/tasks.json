@@ -89,8 +89,15 @@
                 
                 // -----------------------------------
                 
-                "13_filebuff/00_info.c",
+                // "13_filebuff/01_setvbuf.c",
+                // "13_filebuff/02_fsync.c",
+                // "13_filebuff/03_fdopen.c",
                 // "13_filebuff/direct_read.c",
+                
+                // -----------------------------------
+
+                "14_filesys/00_info.c",
+                // "14_filesys/t_mount.c",
                 
                 // -----------------------------------
 
