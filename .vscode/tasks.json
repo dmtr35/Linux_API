@@ -12,12 +12,14 @@
                 
                 // -----------------------------------
 
+                // "04_fileio/00_prog/copy.c",
+                // "04_fileio/00_info.c",
+                // "04_fileio/01_open.c",
                 // "04_fileio/dup.c",
                 // "04_fileio/fcntl.c",
                 // "04_fileio/ioctl.c",
                 // "04_fileio/lseek.c",
                 // "04_fileio/mkstemp_tmpfile.c",
-                // "04_fileio/open.c",
                 // "04_fileio/open64.c",
                 // "04_fileio/pread_pwrite.c",
                 // "04_fileio/read.c",
@@ -89,19 +91,19 @@
                 
                 // -----------------------------------
                 
-                // "13_filebuff/01_setvbuf.c",
+                // "13_filebuff/01_stdio_buf.c",
                 // "13_filebuff/02_fsync.c",
                 // "13_filebuff/03_fdopen.c",
                 // "13_filebuff/direct_read.c",
                 
                 // -----------------------------------
 
-                "14_filesys/00_info.c",
+                // "14_filesys/00_info.c",
                 // "14_filesys/t_mount.c",
                 
                 // -----------------------------------
 
-                // "prog/copy.c",
+                
                 // "prog/cp.c",
                 // "prog/dup_dup2.c",
                 // "prog/my_getpwnam.c",

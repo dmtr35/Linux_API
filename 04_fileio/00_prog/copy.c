@@ -1,10 +1,13 @@
-#include <fcntl.h>      /* open */
-#include <unistd.h>     /* read, write */
-#include <sys/stat.h>
-#include "../lib/tlpi_hdr.h"
-#include "../lib/error_functions.h"
+#include <sys/stat.h>                   /* open: "S_IRUSR, S_IWUSR, S_IRGRP, S_IWGRP, S_IROTH, S_IWOTH" */
+#include <fcntl.h>                      /* open, mode_t, O_CREAT, O_RDONLY, O_WRONLY, O_TRUNC */
+#include <unistd.h>                     /* read, write, ssize_t */
+#include <stdlib.h>                     /* EXIT_SUCCESS, EXIT_FAILURE */
+#include <string.h>                     /* strcmp */
 
-#ifndef BUF_SIZE        /* Позволяет "cc -D" перекрыть определение */
+// #include "../../lib/tlpi_hdr.h"
+#include "../../lib/error_functions.h"
+
+#ifndef BUF_SIZE                        /* Позволяет "cc -D" перекрыть определение */
 #define BUF_SIZE 1024
 #endif
 
@@ -25,7 +28,7 @@ int main(int argc, char *argv[])
         errExit("opening file %s", argv[1]);
 
     openFlags = O_CREAT | O_WRONLY | O_TRUNC;
-    filePerms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;  /* rw-rw-rw- */
+    filePerms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;      /* rw-rw-rw- */
     outputFd = open(argv[2], openFlags, filePerms);
     if (outputFd == -1)
         errExit("opening file %s", argv[2]);

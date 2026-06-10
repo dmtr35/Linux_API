@@ -1,12 +1,22 @@
-#define _GNU_SOURCE
-#include <fcntl.h>              /* open */
-#include <unistd.h>             /* STDIN_FILENO, STDOUT_FILENO, STDERR_FILENO */
-#include "../lib/tlpi_hdr.h"
+// #define _GNU_SOURCE
+#include <sys/stat.h>                   /* open: "S_IRUSR, S_IWUSR" */
+#include <fcntl.h>                      /* open */
+#include <unistd.h>                     /* STDIN_FILENO, STDOUT_FILENO, STDERR_FILENO */
+
+// #include "../lib/tlpi_hdr.h"
 #include "../lib/error_functions.h"
 
 // Возвращает дескриптор при успешном завершении или –1 при ошибке
 // символьная ссылка разыменовывается
-// int open(const char *pathname, int flags, ... /* mode_t mode */);
+int open(const char *pathname, int flags, ... /* mode_t mode */);
+
+// -----------------------------------------------------------------
+
+int close(int fd);
+// Возвращает 0 при успешном завершении или –1 при ошибке
+
+// -----------------------------------------------------------------
+
 
 // flags. Значения для аргументов флагов системного вызова open()
 // Флаг           SYS?      Назначение
@@ -54,7 +64,7 @@ int main()
     
     /* Открытие нового или существующего файла для записи; записываемые данные
     должны всегда добавляться в конец файла */
-    fd = open("w.log", O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);       /* -rw------- */
+    fd = open("w.log", O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);                   /* -rw------- */
     if (fd == -1)
         errExit("open");
     close(fd);
@@ -84,8 +94,7 @@ int main()
 
 
 
-int close(int fd);
-// Возвращает 0 при успешном завершении или –1 при ошибке
+
 
 
 
