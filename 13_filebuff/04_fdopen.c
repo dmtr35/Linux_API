@@ -1,16 +1,6 @@
 // #define _GNU_SOURCE
 #include <stdio.h>                          /* fileno, fdopen */
 #include <unistd.h>                         /* STDOUT_FILENO */
-// #include <fcntl.h>
-// #include <unistd.h>             /* dup */
-// #include <string.h>             /* strlen */
-// #include "../lib/tlpi_hdr.h"
-// #include "../lib/error_functions.h"
-// #include <sys/types.h>                          /* Определения типов, используемые многими программами */
-// #include <stdio.h>                              /* Стандартные функции ввода-вывода */
-// #include <stdlib.h>                             /* Прототипы наиболее востребованных библиотечных функций плюс константы EXIT_SUCCESS и EXIT_FAILURE */
-// #include <errno.h>                              /* Объявление errno и определение констант ошибок */
-// #include <string.h> 
 
 //  Смешивание библиотечных функций и системных вызовов для файлового ввода-вывода
 

@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     char buf[BUF_SIZE];
 
     if (setlocale(LC_ALL, "C") == NULL)
-        errExit("setlocale");               /* Использование в преобразовании настроек локали */
+        errExit("setlocale");                                               /* Использование в преобразовании настроек локали */
 
     t = time(NULL);
         

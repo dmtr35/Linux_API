@@ -13,6 +13,7 @@
                 // -----------------------------------
 
                 // "04_fileio/00_prog/copy.c",
+
                 // "04_fileio/00_info.c",
                 // "04_fileio/01_open.c",
                 // "04_fileio/dup.c",
@@ -93,8 +94,10 @@
                 
                 // "13_filebuff/01_stdio_buf.c",
                 // "13_filebuff/02_fsync.c",
-                // "13_filebuff/03_fdopen.c",
+                // "13_filebuff/03_posix_fadvise.c",
+                // "13_filebuff/04_fdopen.c",
                 // "13_filebuff/direct_read.c",
+                "13_filebuff/write_bytes.c",
                 
                 // -----------------------------------
 
