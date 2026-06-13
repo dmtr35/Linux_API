@@ -10,33 +10,30 @@
     так что все изменения данных и метаданных сбрасываются на диск. 
 
     При компиляции с параметром -DUSE_FDATASYNC выполнять fdatasync() после каждой записи. 
-    так что изменения данных (и, возможно, метаданных) сбрасываются на диск. 
+    Записываются данные и только те метаданные, без которых данные нельзя потом прочитать. 
 
-    Если скомпилировано с -DUSE_FSYNC, выполняйте fsync() после каждой записи, чтобы 
-    данные и метаданные сбрасываются на диск.
+    Если скомпилировано с -DUSE_FSYNC, выполнять fsync() после каждой записи.
+    Данные и все метаданные сбрасываются на диск.
 */
 
-/*
-    dm@y510p:~/WebstormProjects/c/Linux_API$ cc 13_filebuff/write_bytes.c lib/get_num.c lib/error_function.c -o main && time ./main startup 10000000 1024
+/*  результаты:
 
+    $ cc 13_filebuff/write_bytes.c lib/get_num.c lib/error_function.c -o main && time ./main startup 10000000 1024
     real    0m0,020s
     user    0m0,004s
     sys     0m0,016s
-
-    dm@y510p:~/WebstormProjects/c/Linux_API$ cc -DUSE_FDATASYNC 13_filebuff/write_bytes.c lib/get_num.c lib/error_function.c -o main && time ./main startup 10000000 1024
-
+    
+    $ cc -DUSE_FDATASYNC 13_filebuff/write_bytes.c lib/get_num.c lib/error_function.c -o main && time ./main startup 10000000 1024
     real    0m12,737s
     user    0m0,050s
     sys     0m0,611s
-    dm@y510p:~/WebstormProjects/c/Linux_API$ cc -DUSE_O_SYNC 13_filebuff/write_bytes.c lib/get_num.c lib/error_function.c -o ma
-    in && time ./main startup 10000000 1024
 
+    $ cc -DUSE_O_SYNC 13_filebuff/write_bytes.c lib/get_num.c lib/error_function.c -o main && time ./main startup 10000000 1024
     real    0m20,462s
     user    0m0,042s
     sys     0m0,715s
-    dm@y510p:~/WebstormProjects/c/Linux_API$ cc -DUSE_FSYNC 13_filebuff/write_bytes.c lib/get_num.c lib/error_function.c -o mai
-    n && time ./main startup 10000000 1024
-
+    
+    $ cc -DUSE_FSYNC 13_filebuff/write_bytes.c lib/get_num.c lib/error_function.c -o main && time ./main startup 10000000 1024
     real    0m20,966s
     user    0m0,032s
     sys     0m0,773s

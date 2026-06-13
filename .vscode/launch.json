@@ -13,16 +13,20 @@
             // "args": ["9:39:46pm 1 Feb 2011", "%I:%M:%S%p %d %b %Y"],
             // "args": ["9:39:46pm 1 Feb 2011", "%I:%M:%S%p %d %b %Y", "%F %T"],
 
-            "args": ["x", "1000000", "1024"],
+            // "args": ["x", "1000000", "1024"],
 
             // "args": ["13_filebuff/test_x.txt", "512"],
             // "args": ["13_filebuff/test_x.txt", "256"],
             // "args": ["13_filebuff/test_x.txt", "512", "1"],
             // "args": ["13_filebuff/test_x.txt", "4096", "8192", "512"],
             // "args": ["13_filebuff/test_x.txt", "4096", "512", "256"],
-            // "args": ["78921"],
             // "args": ["SHELL=/bin/bash", "BYE=Ciao"],
             // "args": ["startup2", "100", "A"],
+
+            "args": ["startup"],
+            // "args": ["-n5", "startup"],
+            // "args": ["-f", "-n", "5", "startup"],
+            // "args": ["-f", "-n5", "startup"],
 
 
             "stopAtEntry": false,

@@ -16,17 +16,17 @@
 
                 // "04_fileio/00_info.c",
                 // "04_fileio/01_open.c",
+                // "04_fileio/02_read.c",
+                // "04_fileio/03_write.c",
+                // "04_fileio/04_lseek.c",
                 // "04_fileio/dup.c",
                 // "04_fileio/fcntl.c",
                 // "04_fileio/ioctl.c",
-                // "04_fileio/lseek.c",
                 // "04_fileio/mkstemp_tmpfile.c",
                 // "04_fileio/open64.c",
                 // "04_fileio/pread_pwrite.c",
-                // "04_fileio/read.c",
                 // "04_fileio/readv_writev.c",
                 // "04_fileio/truncate_ftruncate.c",
-                // "04_fileio/write.c",
 
                 // -----------------------------------
 
@@ -97,7 +97,8 @@
                 // "13_filebuff/03_posix_fadvise.c",
                 // "13_filebuff/04_fdopen.c",
                 // "13_filebuff/direct_read.c",
-                "13_filebuff/write_bytes.c",
+                "13_filebuff/my_tail.c",
+                // "13_filebuff/write_bytes.c",
                 
                 // -----------------------------------
 

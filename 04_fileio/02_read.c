@@ -1,11 +1,12 @@
 #define _GNU_SOURCE
-#include <fcntl.h>          /* open */
-#include <unistd.h>         /* read */
-#include "../lib/tlpi_hdr.h"
+#include <stdio.h>                          /* printf */
+#include <fcntl.h>                          /* open, O_RDONLY */
+#include <unistd.h>                         /* read, ssize_t, STDIN_FILENO */
+// #include "../lib/tlpi_hdr.h"
 #include "../lib/error_functions.h"
 
 
-// Возвращает количество считанных байтов, 0 при EOF или –1 при ошибке
+// Возвращает количество считанных байтов, 0 при EOF или -1 при ошибке
 // count определяет максимальное количество считываемых байтов
 // buffer предоставляет адрес буфера памяти, в который должны быть помещены входные данные
 ssize_t read(int fd, void *buffer, size_t count);

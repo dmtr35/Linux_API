@@ -18,9 +18,11 @@ FILE *fdopen(int fd, const char *mode);
 
 int main(int argc, char *argv[])
 {
-    printf("To man the world is twofold, ");
-    // fflush(NULL);
+    printf("To man the world is twofold, \n");
     write(STDOUT_FILENO, "in accordance with his twofold attitude.\n", 41);
+    // fflush(NULL);
+    // printf("To man the world is twofold, \n");
+    // write(STDOUT_FILENO, "in accordance with his twofold attitude.\n", 41);
 
 
     return 0;
