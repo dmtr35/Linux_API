@@ -203,7 +203,7 @@ int main()
     char *result9;
     struct tm timeptr;
     char sbuf[SBUF_SIZE];
-    memset(&timeptr, 0, sizeof(struct tm));
+    memset(&timeptr, 0, sizeof(struct tm));         // memset очищает память, заполняет нужным символом
     result9 = strptime("9:39:46pm 1 Feb 2011", "%I:%M:%S%p %d %b %Y", &timeptr);
     
     if (strftime(sbuf, SBUF_SIZE, "%I:%M:%S%p %d %b %Y", &timeptr) == 0)

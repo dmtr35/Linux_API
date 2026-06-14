@@ -23,8 +23,8 @@
             // "args": ["SHELL=/bin/bash", "BYE=Ciao"],
             // "args": ["startup2", "100", "A"],
 
-            "args": ["startup"],
-            // "args": ["-n5", "startup"],
+            // "args": ["startup"],
+            "args": ["-n2", "startup"],
             // "args": ["-f", "-n", "5", "startup"],
             // "args": ["-f", "-n5", "startup"],
 
