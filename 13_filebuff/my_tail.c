@@ -6,7 +6,7 @@
 #include <unistd.h>                             /* read, ssize_t, STDOUT_FILENO */
 #include "../lib/error_functions.h"
 
-#define MAX_READ 3
+#define MAX_READ 4096
 
 int main(int argc, char *argv[])
 {
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 
         for(int i = 0; i < res_read; ++i){
             if (buf[i] == '\n') {
-                if(tot_line + 1 == max_arr) {
+                if(tot_line + 1 == max_arr) {                   // увеличение массива с помощью realloc
                     max_arr = max_arr * 2;
     
                     int *tmp = realloc(arr_points, max_arr * sizeof(int));
@@ -92,11 +92,17 @@ int main(int argc, char *argv[])
 
     lseek(fd, arr_points[tot_line - n], SEEK_SET);
 
-    while((res_read = read(fd, buf, MAX_READ)) > 0 || flag_f) {
+
+    while(1) {
+        res_read = read(fd, buf, MAX_READ);
+        if (res_read == -1) errExit("read");
+
         if(res_read == 0) {
+            if (!flag_f) break;
             sleep(1);
             continue;
         }
+
         res_write = write(STDOUT_FILENO, buf, res_read);
     }
 

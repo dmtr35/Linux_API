@@ -97,12 +97,12 @@
                 // "13_filebuff/03_posix_fadvise.c",
                 // "13_filebuff/04_fdopen.c",
                 // "13_filebuff/direct_read.c",
-                "13_filebuff/my_tail.c",
+                // "13_filebuff/my_tail.c",
                 // "13_filebuff/write_bytes.c",
                 
                 // -----------------------------------
 
-                // "14_filesys/00_info.c",
+                "14_filesys/00_info.c",
                 // "14_filesys/t_mount.c",
                 
                 // -----------------------------------
