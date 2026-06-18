@@ -9,7 +9,7 @@
     Вызовы:
         ./t_mount -t ext2 -o bsdgroups /dev/sdb2 /tmp/testfs
         ./t_mount -f Rr /dev/sdb2 /tmp/testfs
-        ./t_mount -f m /testfs /tmp/demo
+        ./t_mount -f m /tmp/testfs /tmp/new_fs
 */
 
 // optarg — значение текущей опции ("ext4", "rw")
