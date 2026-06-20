@@ -30,7 +30,9 @@
 
             // "args": ["-t", "ext2", "-o", "bsdgroups", "/dev/sdb2", "/tmp/testfs"],
             // "args": ["-f", "Rr", "/dev/sdb2", "/tmp/testfs"],
-            "args": ["-f", "m", "/testfs", "/tmp/demo"],
+            // "args": ["-f", "m", "/testfs", "/tmp/demo"],
+            
+            "args": ["1000000", "test_dir"],
 
 
             "stopAtEntry": false,
