@@ -107,7 +107,12 @@
                 // "14_filesys/t_mount.c",
                 // "14_filesys/t_statfs.c",
                 // "14_filesys/t_statvfs.c",
-                "14_filesys/test_create_delete_files.c",
+                // "14_filesys/test_create_delete_files.c",
+                
+                // -----------------------------------
+
+                "15_files/01_stat.c",
+                // "15_files/t_stat.c",
                 
                 // -----------------------------------
 

@@ -1,6 +1,6 @@
 // #define _GNU_SOURCE
 #include <sys/stat.h>                   /* open: "S_IRUSR, S_IWUSR" */
-#include <fcntl.h>                      /* open */
+#include <fcntl.h>                      /* open, O_RDONLY, O_RDWR, O_WRONLY, O_CREAT, O_TRUNC, O_APPEND */
 #include <unistd.h>                     /* STDIN_FILENO, STDOUT_FILENO, STDERR_FILENO */
 
 // #include "../lib/tlpi_hdr.h"

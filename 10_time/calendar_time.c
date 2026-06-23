@@ -6,6 +6,16 @@
 
 #define SECONDS_IN_TROPICAL_YEAR (365.24219 * 24 * 60 * 60)
 
+long time_ms(void)
+{
+    struct timeval tv;
+
+    if (gettimeofday(&tv, NULL) == -1)
+        errExit("gettimeofday");
+
+    return (long)(tv.tv_sec * 1000 + tv.tv_usec / 1000);
+}
+
 int main(int argc, char *argv[])
 {
     time_t t;
