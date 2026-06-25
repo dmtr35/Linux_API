@@ -1,3 +1,4 @@
+#define _GNU_SOURCE                     /* S_IFMT, S_IFREG */
 #include <sys/stat.h>                   /* stat, lstat, fstat */
 #include <stdio.h>                      /* printf */
 #include <sys/stat.h>                   /* open: "S_IRUSR, S_IWUSR" */
@@ -48,6 +49,16 @@ void printf_stat(struct stat *statbuf)
     );
 }
 
+/*  Макросы для проверки типов файлов в поле st_mode структуры stat
+    Константа           Проверочный макрос          Тип файла
+    S_IFREGS            ISREG()                     Обычный файл
+    S_IFDIRS            ISDIR()                     Каталог
+    S_IFCHRS            ISCHR()                     Символьное устройство
+    S_IFBLKS            ISBLK()                     Блочное устройство
+    S_IFIFOS            ISFIFO()                    Очередь FIFO или канал
+    S_IFSOCKS           ISSOCK()                    Сокет
+    S_IFLNKS            ISLNK()                     Символическая ссылка
+*/
 
 int main(int argc, char *argv[])
 {
@@ -56,6 +67,13 @@ int main(int argc, char *argv[])
     
     res = stat("/dev/sda2", &st);
     printf_stat(&st);
+
+    if ((st.st_mode & S_IFMT) == S_IFREG)
+        printf("regular file\n");
+    // Поскольку данная операция довольно обычная, для упрощения написанного выше применяется стандартный макрос:
+    if (S_ISREG(st.st_mode))
+        printf("regular file\n");
+
     // -----------------------------------------------
     
     printf("\n");
@@ -74,7 +92,11 @@ int main(int argc, char *argv[])
     if (close(fd) == -1)
         errExit("close");
 
-    // -----------------------------------------------
+    // ===============================================
+
+
+
+
 
     
     return 0;
