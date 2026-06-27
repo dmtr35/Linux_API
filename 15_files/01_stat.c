@@ -51,13 +51,13 @@ void printf_stat(struct stat *statbuf)
 
 /*  Макросы для проверки типов файлов в поле st_mode структуры stat
     Константа           Проверочный макрос          Тип файла
-    S_IFREGS            ISREG()                     Обычный файл
-    S_IFDIRS            ISDIR()                     Каталог
-    S_IFCHRS            ISCHR()                     Символьное устройство
-    S_IFBLKS            ISBLK()                     Блочное устройство
-    S_IFIFOS            ISFIFO()                    Очередь FIFO или канал
-    S_IFSOCKS           ISSOCK()                    Сокет
-    S_IFLNKS            ISLNK()                     Символическая ссылка
+    S_IFREG             S_ISREG()                   Обычный файл
+    S_IFDIR             S_ISDIR()                   Каталог
+    S_IFCHR             S_ISCHR()                   Символьное устройство
+    S_IFBLK             S_ISBLK()                   Блочное устройство
+    S_IFIFO             S_ISFIFO()                  Очередь FIFO или канал
+    S_IFSOCK            S_ISSOCK()                  Сокет
+    S_IFLNK             S_ISLNK()                   Символическая ссылка
 */
 
 int main(int argc, char *argv[])
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     int res, fd;
     struct stat st;
     
-    res = stat("/dev/sda2", &st);
+    res = stat("startup", &st);
     printf_stat(&st);
 
     if ((st.st_mode & S_IFMT) == S_IFREG)
