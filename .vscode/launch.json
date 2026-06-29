@@ -32,7 +32,9 @@
             // "args": ["-f", "Rr", "/dev/sdb2", "/tmp/testfs"],
             // "args": ["-f", "m", "/testfs", "/tmp/demo"],
             
-            "args": ["100000", "test_dir2", "1"],
+            // "args": ["100000", "test_dir2", "1"],
+            
+            "args": ["apue"],
 
 
             "stopAtEntry": false,

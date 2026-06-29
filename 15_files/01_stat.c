@@ -63,22 +63,22 @@ void printf_stat(struct stat *statbuf)
 int main(int argc, char *argv[])
 {
     int res, fd;
-    struct stat st;
+    struct stat sb;
     
-    res = stat("startup", &st);
-    printf_stat(&st);
+    res = stat("startup", &sb);
+    printf_stat(&sb);
 
-    if ((st.st_mode & S_IFMT) == S_IFREG)
+    if ((sb.st_mode & S_IFMT) == S_IFREG)
         printf("regular file\n");
     // Поскольку данная операция довольно обычная, для упрощения написанного выше применяется стандартный макрос:
-    if (S_ISREG(st.st_mode))
+    if (S_ISREG(sb.st_mode))
         printf("regular file\n");
 
     // -----------------------------------------------
     
     printf("\n");
-    res = lstat("link_startup", &st);
-    printf_stat(&st);
+    res = lstat("link_startup", &sb);
+    printf_stat(&sb);
     // -----------------------------------------------
 
     printf("\n");
@@ -86,8 +86,8 @@ int main(int argc, char *argv[])
     if(fd == -1)
         errExit("open");
 
-    res = fstat(fd, &st);
-    printf_stat(&st);
+    res = fstat(fd, &sb);
+    printf_stat(&sb);
 
     if (close(fd) == -1)
         errExit("close");
