@@ -34,7 +34,9 @@
             
             // "args": ["100000", "test_dir2", "1"],
             
-            "args": ["apue"],
+            "args": ["lib"],
+            // "args": ["apue", "tmp"],
+            // "args": ["-r", "apue", "tmp"],
 
 
             "stopAtEntry": false,
