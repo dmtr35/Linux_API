@@ -34,8 +34,8 @@
             
             // "args": ["100000", "test_dir2", "1"],
             
-            // "args": ["test_dir"],
-            "args": ["test_dir", "startup"],
+            "args": ["startup"],
+            // "args": ["test_dir", "startup"],
             // "args": ["-r", "apue", "tmp"],
 
 

@@ -61,17 +61,40 @@ void write_to_file(char *path, struct database *db)
         errExit("open");
 
     for (size_t i = 0; i < db->count; ++i) {
+        ssize_t res;
         struct file_info *f = &db->files[i];
+        
+        int len = snprintf(
+            NULL,
+            0,
+            "%s|%ld|%ld.%09ld|%ld.%09ld|%ld.%09ld\n",
+            f->path,
+            (long)f->inode,
+            (long)f->atime.tv_sec,  (long)f->atime.tv_nsec,
+            (long)f->mtime.tv_sec,  (long)f->mtime.tv_nsec,
+            (long)f->ctime.tv_sec,  (long)f->ctime.tv_nsec);
+        if (len < 0)
+            errExit("snprintf");
 
-        size_t len = strlen(f->path) + 1;
+        char *str_data = malloc(len + 1);
+        if (str_data == NULL)
+            errExit("malloc");
 
-        write(fd, &len, sizeof(len));
-        write(fd, f->path, len);
+        snprintf(
+            str_data,
+            len + 1,
+            "%s|%ld|%ld.%09ld|%ld.%09ld|%ld.%09ld\n",
+            f->path,
+            (long)f->inode,
+            (long)f->atime.tv_sec,  (long)f->atime.tv_nsec,
+            (long)f->mtime.tv_sec,  (long)f->mtime.tv_nsec,
+            (long)f->ctime.tv_sec,  (long)f->ctime.tv_nsec);
 
-        write(fd, &f->inode, sizeof(f->inode));
-        write(fd, &f->atime, sizeof(f->atime));
-        write(fd, &f->ctime, sizeof(f->ctime));
-        write(fd, &f->mtime, sizeof(f->mtime));
+        res = write(fd, str_data, len);
+        if (res == -1)
+            errExit("write");
+
+        free(str_data);
     }
 
     if(close(fd))
