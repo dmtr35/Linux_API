@@ -34,9 +34,10 @@
             
             // "args": ["100000", "test_dir2", "1"],
             
-            "args": ["startup"],
-            // "args": ["test_dir", "startup"],
-            // "args": ["-r", "apue", "tmp"],
+            // "args": ["lib"],
+            // "args": ["startup"],
+            // "args": ["startup", "save_data"],
+            "args": ["-r", "startup", "save_data"],
 
 
             "stopAtEntry": false,

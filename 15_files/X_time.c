@@ -12,6 +12,7 @@
 #include <fcntl.h>                      /* open, O_WRONLY, O_CREAT, O_TRUNC */
 #include <unistd.h>                     /* read, write */
 #include <sys/stat.h>                   /* open: "S_IRUSR, S_IWUSR" */
+#include <utime.h>                      /* utime */
 
 
 #include "../lib/error_functions.h"
@@ -67,12 +68,10 @@ void write_to_file(char *path, struct database *db)
         int len = snprintf(
             NULL,
             0,
-            "%s|%ld|%ld.%09ld|%ld.%09ld|%ld.%09ld\n",
+            "%s|%ld|%09ld|%ld|%09ld\n",
             f->path,
-            (long)f->inode,
             (long)f->atime.tv_sec,  (long)f->atime.tv_nsec,
-            (long)f->mtime.tv_sec,  (long)f->mtime.tv_nsec,
-            (long)f->ctime.tv_sec,  (long)f->ctime.tv_nsec);
+            (long)f->mtime.tv_sec,  (long)f->mtime.tv_nsec);
         if (len < 0)
             errExit("snprintf");
 
@@ -83,12 +82,10 @@ void write_to_file(char *path, struct database *db)
         snprintf(
             str_data,
             len + 1,
-            "%s|%ld|%ld.%09ld|%ld.%09ld|%ld.%09ld\n",
+            "%s|%ld|%09ld|%ld|%09ld\n",
             f->path,
-            (long)f->inode,
             (long)f->atime.tv_sec,  (long)f->atime.tv_nsec,
-            (long)f->mtime.tv_sec,  (long)f->mtime.tv_nsec,
-            (long)f->ctime.tv_sec,  (long)f->ctime.tv_nsec);
+            (long)f->mtime.tv_sec,  (long)f->mtime.tv_nsec);
 
         res = write(fd, str_data, len);
         if (res == -1)
@@ -182,6 +179,64 @@ void func_tree(char *path, database *db)
     }
     closedir(info_dir);
 }
+
+void restor_meta(char *path_file, struct database *db)
+{
+    typedef struct timespec {
+        time_t tv_sec;
+        long tv_nsec;
+    } timespec;
+
+    timespec ts;
+
+    // struct stat sb;
+    // if(stat(path_file, &sb) == -1)
+    //     errExit("stat");
+
+    struct utimbuf utb;
+    int fd, offset = 0, count = 0;
+    ssize_t res;
+    char buffer[MAX_PATH + 1] = {0};
+
+    fd = open(path_file, O_RDONLY);
+    if(fd == -1)
+        errExit("open");
+        
+    while(res = read(fd, buffer, MAX_PATH)) {
+        for(int i = 0; i < res; ++i) {
+            if(buffer[i] == '\n') {
+                char *tmp;
+                char *str_data = malloc(i + 1);
+                if(str_data == NULL)
+                    errExit("malloc");
+
+                strncpy(str_data, buffer, i);
+                str_data[i] = '\0';
+                printf("%s\n", str_data);
+
+                // ===================================================
+                while(tmp = strrchr(str_data, '|') != NULL) {
+                    printf("%s\n");
+                }
+                // ts.tv_sec = ;
+
+                // utb.actime = sb.st_atime;
+                // utb.modtime = sb.st_atime;
+
+                // if (utime(path, &utb) == -1)
+                //     errExit("utime");
+                // ===================================================
+                free(str_data);
+
+                offset += i + 1;
+                if(lseek(fd, offset, SEEK_SET) == -1)
+                    errExit("lseek");
+
+                break;
+            }
+        }
+    }
+}
    
 
 int main(int argc, char *argv[])
@@ -213,6 +268,11 @@ int main(int argc, char *argv[])
         strcpy(path_file, argv[3]);
     }
 
+    if(flag_restor) {
+        restor_meta(path_file, &db);
+        return 0;
+    }
+
     char *full_path = realpath(path, NULL);                                             // выделяется память
     if (full_path == NULL)
         errExit("realpath");
@@ -230,13 +290,12 @@ int main(int argc, char *argv[])
     add_to_arr(parent_path, &sb, &db);
     free(full_path_copy);
     
+    if(lstat(full_path, &sb) == -1)
+        errExit("lstat");
     
     if (S_ISDIR(sb.st_mode)) {
         func_tree(full_path, &db);
     } else {
-        if(lstat(full_path, &sb) == -1)
-            errExit("lstat");
-
         add_to_arr(full_path, &sb, &db);
     }
     
@@ -247,9 +306,7 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-
     write_to_file(path_file, &db);
-
 
     free_database(&db);
                 
