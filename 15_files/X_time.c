@@ -3,7 +3,7 @@
 #include <stdlib.h>                     /* realpath */
 #include <libgen.h>                     /* dirname, basename */
 #include <stdio.h>                      /* printf */
-#include <sys/stat.h>                   /* stat, lstat, fstat */
+#include <sys/stat.h>                   /* stat, lstat, fstat, utimensat */
 #include <sys/types.h>                  /* ino_t, dev_t, mode_t, uid_t, gid_t, off_t */
 #include <time.h>                       /* ctime */
 #include <string.h>                     /* strstr, strcmp, strdup */
@@ -12,12 +12,15 @@
 #include <fcntl.h>                      /* open, O_WRONLY, O_CREAT, O_TRUNC */
 #include <unistd.h>                     /* read, write */
 #include <sys/stat.h>                   /* open: "S_IRUSR, S_IWUSR" */
-#include <utime.h>                      /* utime */
+#include <inttypes.h>                   /* uintmax_t */
 
 
 #include "../lib/error_functions.h"
 
+// int utimensat(int dirfd, const char *pathname, const struct timespec times[2], int flags);
+
 #define MAX_PATH 256
+#define LIMIT 4096
 
 typedef struct file_info {
     ino_t inode;
@@ -68,8 +71,10 @@ void write_to_file(char *path, struct database *db)
         int len = snprintf(
             NULL,
             0,
-            "%s|%ld|%09ld|%ld|%09ld\n",
+            "%s|%ju|%ju|%ld|%09ld|%ld|%09ld\n",
             f->path,
+            (uintmax_t)f->inode,
+            (uintmax_t)f->device,
             (long)f->atime.tv_sec,  (long)f->atime.tv_nsec,
             (long)f->mtime.tv_sec,  (long)f->mtime.tv_nsec);
         if (len < 0)
@@ -78,12 +83,13 @@ void write_to_file(char *path, struct database *db)
         char *str_data = malloc(len + 1);
         if (str_data == NULL)
             errExit("malloc");
-
         snprintf(
             str_data,
             len + 1,
-            "%s|%ld|%09ld|%ld|%09ld\n",
+            "%s|%ju|%ju|%ld|%09ld|%ld|%09ld\n",
             f->path,
+            (uintmax_t)f->inode,
+            (uintmax_t)f->device,
             (long)f->atime.tv_sec,  (long)f->atime.tv_nsec,
             (long)f->mtime.tv_sec,  (long)f->mtime.tv_nsec);
 
@@ -180,64 +186,79 @@ void func_tree(char *path, database *db)
     closedir(info_dir);
 }
 
+void set_timespec(void *ts, char *str_data, int flag_type)
+{
+    char *ptr;
+    if((ptr = strrchr(str_data, '|')) != NULL) {
+        if(flag_type == 0)
+            *(time_t *)ts = strtol(&ptr[1], NULL, 10);
+        else if (flag_type == 1)
+            *(long *)ts = strtol(&ptr[1], NULL, 10);
+        else if (flag_type == 2)
+            *(dev_t *)ts = strtol(&ptr[1], NULL, 10);
+        else if (flag_type == 3)
+            *(ino_t *)ts = strtol(&ptr[1], NULL, 10);
+        ptr[0] = '\0';
+    }
+}
+
 void restor_meta(char *path_file, struct database *db)
 {
-    typedef struct timespec {
-        time_t tv_sec;
-        long tv_nsec;
-    } timespec;
-
-    timespec ts;
-
-    // struct stat sb;
-    // if(stat(path_file, &sb) == -1)
-    //     errExit("stat");
-
-    struct utimbuf utb;
-    int fd, offset = 0, count = 0;
+    struct stat sb; 
+    struct timespec times[2];
+    int fd, offset = 0, count = 0, n = 256;
+    ino_t saved_inode;
+    dev_t saved_dev;
     ssize_t res;
     char buffer[MAX_PATH + 1] = {0};
 
     fd = open(path_file, O_RDONLY);
     if(fd == -1)
         errExit("open");
-        
-    while(res = read(fd, buffer, MAX_PATH)) {
-        for(int i = 0; i < res; ++i) {
-            if(buffer[i] == '\n') {
-                char *tmp;
-                char *str_data = malloc(i + 1);
-                if(str_data == NULL)
-                    errExit("malloc");
 
-                strncpy(str_data, buffer, i);
-                str_data[i] = '\0';
-                printf("%s\n", str_data);
+    while(res = read(fd, buffer, n)) {
+        if((strchr(buffer, '\n')) == NULL) {
+            n *= 2;
+            if(lseek(fd, 0, SEEK_SET) == -1)
+                errExit("lseek");
+            if(n > LIMIT)
+                fatal("limit memory");
+        } else {
+            char *ptr;
+            size_t end = strcspn(buffer, "\n");
+            char *str_data = malloc(end + 1);
+            if(str_data == NULL)
+                errExit("malloc");
 
-                // ===================================================
-                while(tmp = strrchr(str_data, '|') != NULL) {
-                    printf("%s\n");
-                }
-                // ts.tv_sec = ;
+            strncpy(str_data, buffer, end);
+            str_data[end] = '\0';
+            printf("%s\n", str_data);
 
-                // utb.actime = sb.st_atime;
-                // utb.modtime = sb.st_atime;
+            // ===========================================================
+            set_timespec(&times[1].tv_nsec, str_data, 1);
+            set_timespec(&times[1].tv_sec, str_data, 0);
+            set_timespec(&times[0].tv_nsec, str_data, 1);
+            set_timespec(&times[0].tv_sec, str_data, 0);
+            set_timespec(&saved_dev, str_data, 2);
+            set_timespec(&saved_inode, str_data, 3);
+ 
+            if(lstat(str_data, &sb) == -1)
+                errExit("lstat");
 
-                // if (utime(path, &utb) == -1)
-                //     errExit("utime");
-                // ===================================================
-                free(str_data);
-
-                offset += i + 1;
-                if(lseek(fd, offset, SEEK_SET) == -1)
-                    errExit("lseek");
-
-                break;
+            if (sb.st_ino == saved_inode && sb.st_dev == saved_dev) {
+                if (utimensat(AT_FDCWD, str_data, times, 0) == -1)
+                    errExit("utimensat");
             }
+            // ===========================================================
+            free(str_data);
+
+            offset += end + 1;
+            if(lseek(fd, offset, SEEK_SET) == -1)
+                errExit("lseek");
         }
     }
 }
-   
+
 
 int main(int argc, char *argv[])
 {
