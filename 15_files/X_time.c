@@ -97,6 +97,7 @@ void write_to_file(char *path, struct database *db)
         if (res == -1)
             errExit("write");
 
+        printf("%s\n", str_data);
         free(str_data);
     }
 

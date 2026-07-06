@@ -37,7 +37,8 @@
             // "args": ["lib"],
             // "args": ["startup"],
             // "args": ["startup", "save_data"],
-            "args": ["-r", "startup", "save_data"],
+            // "args": ["startup", "/tmp/rot"],
+            "args": ["-r", "startup", "/tmp/rot"],
 
 
             "stopAtEntry": false,
