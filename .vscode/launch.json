@@ -34,11 +34,11 @@
             
             // "args": ["100000", "test_dir2", "1"],
             
-            // "args": ["lib"],
-            // "args": ["startup"],
-            // "args": ["startup", "save_data"],
-            // "args": ["startup", "/tmp/rot"],
-            "args": ["-r", "startup", "/tmp/rot"],
+            // "args": ["-q", "startup"],                                   // 1 аргумент / 2 аргумента
+            "args": ["-tq", "startup", "atime", "mtime"],                // 4 аргумента / 5 аргументов. вместо времени можно написать "-"
+            // "args": ["-t", "-q", "startup", "atime", "mtime"],
+            // "args": ["-sq", "startup", "/tmp/rot"],                      // 3 аргумента / 4 аргумента
+            // "args": ["-rq", "startup", "/tmp/rot"],                         // 3 аргумента / 4 аргумента
 
 
             "stopAtEntry": false,

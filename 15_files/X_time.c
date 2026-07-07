@@ -250,6 +250,7 @@ void restor_meta(char *path_file, struct database *db)
                 if (utimensat(AT_FDCWD, str_data, times, 0) == -1)
                     errExit("utimensat");
             }
+
             // ===========================================================
             free(str_data);
 
@@ -275,6 +276,45 @@ int main(int argc, char *argv[])
     db.files = malloc(db.capacity * sizeof(struct file_info));
     if (db.files == NULL)
         errExit("malloc");
+
+    // "args": ["-q", "startup"],                                   // 1 аргумент / 2 аргумента
+    // "args": ["-tq", "startup", "atime", "mtime"],                // 4 аргумента / 5 аргументов. вместо времени можно написать "-"
+    // "args": ["-t", "-q", "startup", "atime", "mtime"],                // 4 аргумента / 5 аргументов. вместо времени можно написать "-"
+    // "args": ["-sq", "startup", "/tmp/rot"],                      // 3 аргумента / 4 аргумента
+    // "args": ["-rq", "startup", "/tmp/rot"],                      // 3 аргумента / 4 аргумента
+    
+    // ----------------------------------------------------------
+    char args[32] = "";
+    size_t j = 0;
+    int first_non_option = 1;
+
+    for (; first_non_option < argc; ++first_non_option) {
+
+        if (strcmp(argv[first_non_option], "--") == 0) {
+            ++first_non_option;
+            break;
+        }
+
+        if (argv[first_non_option][0] != '-')
+            break;
+
+        for (char *p = argv[first_non_option] + 1; *p; ++p)
+            args[j++] = *p;
+    }
+
+    args[j] = '\0';
+
+    printf("flags = %s\n", args);
+    printf("first arg = %d\n", first_non_option);
+    // ----------------------------------------------------------
+
+    char *tt = argv[1];
+    if(argc > 2) {
+        if(argv[1][0] == '-' && argv[1]) {
+            printf("y");
+        }
+    }
+
 
     if (argc < 2 || strcmp(argv[1], "--help") == 0) {
         usageErr("%s file [-r] path [path]\n", argv[0]);
