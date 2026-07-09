@@ -41,6 +41,13 @@ typedef struct database {
     size_t capacity;
 } database;
 
+typedef struct a_m_time {
+    char *atime_s;
+    char *atime_ms;
+    char *mtime_s;
+    char *mtime_ms;
+} a_m_time;
+
 
 void free_database(struct database *db)
 {
@@ -286,13 +293,28 @@ void restor_meta(char *path_file, struct database *db, int flag_info)
     if(flag_info)
         print_info(db);  
 }
-void set_time(char *path_file, char *atime, char *mtime, struct database *db, int flag_info)
+void set_time(char *path_file, struct database *db,  a_m_time amt, int flag_info)
 {
     struct stat sb;
     struct timespec times[2];
     int fd;
 
-    
+    char *str = "2024-07-06 16:30:13";
+
+    struct tm tm = {0};
+    if (strptime(str, "%Y-%m-%d %H:%M:%S", &tm) == NULL) {
+        printf("Ошибка разбора\n");
+        return;
+    }
+
+    time_t t = mktime(&tm);
+
+    printf("%ld\n", (long)t);
+}
+
+split_time()
+{
+
 }
 
 int main(int argc, char *argv[])
@@ -356,7 +378,15 @@ int main(int argc, char *argv[])
     }
 
     if (flag_settime) {
-        set_time(path_file, atime, mtime, &db, flag_info);
+
+        char *dot = strchr(atime, '.');
+        char *atime_ms = strchr(atime, '.') + 1;
+        char *end_mtime = strchr(mtime, '.');
+        char *mtime_ms = strchr(mtime, '.') + 1;
+        *end_atime = '\0';
+        *end_mtime = '\0';
+        a_m_time amt = {atime, atime_ms, mtime, mtime_ms};
+        set_time(path_file, &db, amt, flag_info);
         return 0;
     } else if(flag_restor) {
         restor_meta(path_file, &db, flag_info);
