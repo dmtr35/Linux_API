@@ -112,11 +112,13 @@
                 // -----------------------------------
 
                 // "15_files/01_stat.c",
-                // "15_files/02_st_Xtime.c",
-                // "15_files/03_utime.c",
+                // "15_files/02_utime.c",
+                // "15_files/03_chmod.c",
                 // "15_files/file_perms.c",
+                // "15_files/t_chown.c",
                 // "15_files/t_stat.c",
-                "15_files/X_time.c",
+                // "15_files/table_atime_mtime.c",
+                // "15_files/X_time.c",
                 
                 // -----------------------------------
 
