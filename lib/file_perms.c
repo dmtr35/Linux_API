@@ -5,10 +5,7 @@
 #include <stdlib.h>                                     /* EXIT_SUCCESS */
 #include <string.h>                                     /* strcmp */
 #include "../lib/error_functions.h"
-#include "../lib/file_perms.h"
-
-
-// #include "file_perms.h"/* Интерфейс для данной реализации */
+#include "../lib/file_perms.h"                          /* Интерфейс для данной реализации */
 
 #define STR_SIZE sizeof("rwxrwxrwx")
 

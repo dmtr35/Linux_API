@@ -114,9 +114,11 @@
                 // "15_files/01_stat.c",
                 // "15_files/02_utime.c",
                 // "15_files/03_chmod.c",
+                "15_files/04_access.c",
                 // "15_files/file_perms.c",
                 // "15_files/t_chown.c",
                 // "15_files/t_stat.c",
+                // "15_files/t_umask.c",
                 // "15_files/table_atime_mtime.c",
                 // "15_files/X_time.c",
                 
@@ -144,10 +146,11 @@
 
                 
 
+                "lib/curr_time.c",
                 "lib/error_function.c",
+                "lib/file_perms.c",
                 "lib/get_num.c",
                 "lib/ugid_functions.c",
-                "lib/curr_time.c",
                 
                 "-o",
                 "${workspaceFolder}/main",

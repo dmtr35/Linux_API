@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     char *username, *password, *encrypted, *p;
     struct passwd *pwd;
     struct spwd *spwd;
-    Boolean authOk;
+    bool authOk;
     size_t len;
     long lnmax;
 

@@ -5,11 +5,12 @@
 #include <stdlib.h>                                     /* EXIT_SUCCESS */
 #include <stdio.h>                                      /* printf */
 #include <string.h>                                     /* strcmp */
+#include <stdbool.h>                                    /* bool */
+
 
 #include "../lib/error_functions.h"
 #include "../lib/file_perms.h"
 
-typedef enum { FALSE, TRUE } Boolean;
 
 static void displayStatInfo(const struct stat *sb)
 {
@@ -53,7 +54,7 @@ static void displayStatInfo(const struct stat *sb)
 int main(int argc, char *argv[])
 {
     struct stat sb;
-    Boolean statLink;                                           /* Истина, если указано "-l" (то есть использовать lstat) */
+    bool statLink;                                           /* Истина, если указано "-l" (то есть использовать lstat) */
     int fname;                                                  /* Место аргумента filename в массиве argv[] */
     statLink = (argc > 1) && strcmp(argv[1], "-l") == 0;        /* Простой синтаксический анализ для "-l" */
     fname = statLink ? 2 : 1;

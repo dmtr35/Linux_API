@@ -6,7 +6,7 @@
 __attribute__ ((__noreturn__))
 #endif
 
-static void terminate(Boolean useExit3)
+static void terminate(bool useExit3)
 {
     char *s;
     /* Сохраняет дамп ядра, если переменная среды EF_DUMPCORE определена
@@ -21,7 +21,7 @@ static void terminate(Boolean useExit3)
         _exit(EXIT_FAILURE);
 }
 
-static void outputError(Boolean useErr, int err, Boolean flushStdout, const char *format, va_list ap)
+static void outputError(bool useErr, int err, bool flushStdout, const char *format, va_list ap)
 {
 #define BUF_SIZE 500
     char errText[BUF_SIZE];
@@ -61,7 +61,7 @@ void errMsg(const char *format, ...)
     int savedErrno;
     savedErrno = errno;     /* В случае ее изменения на следующем участке */
     va_start(argList, format);
-    outputError(TRUE, errno, TRUE, format, argList);
+    outputError(true, errno, true, format, argList);
     va_end(argList);
     errno = savedErrno;
 }
@@ -70,36 +70,36 @@ void errExit(const char *format, ...)
 {
     va_list argList;
     va_start(argList, format);
-    outputError(TRUE, errno, TRUE, format, argList);
+    outputError(true, errno, true, format, argList);
     va_end(argList);
-    terminate(TRUE);
+    terminate(true);
 }
 
 void err_exit(const char *format, ...)
 {
     va_list argList;
     va_start(argList, format);
-    outputError(TRUE, errno, FALSE, format, argList);
+    outputError(true, errno, false, format, argList);
     va_end(argList);
-    terminate(FALSE);
+    terminate(false);
 }
 
 void errExitEN(int errnum, const char *format, ...)
 {
     va_list argList;
     va_start(argList, format);
-    outputError(TRUE, errnum, TRUE, format, argList);
+    outputError(true, errnum, true, format, argList);
     
-    terminate(TRUE);
+    terminate(true);
 }
 
 void fatal(const char *format, ...)
 {
     va_list argList;
     va_start(argList, format);
-    outputError(FALSE, 0, TRUE, format, argList);
+    outputError(false, 0, true, format, argList);
     va_end(argList);
-    terminate(TRUE);
+    terminate(true);
 }
 
 
