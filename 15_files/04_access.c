@@ -1,5 +1,5 @@
 #include <unistd.h>                         /* access */
-#include <sys/stat.h>                       /* umask, chmod, fchmod */
+#include <sys/stat.h>                       /* umask, chmod, fchmod, S_IRWXU, S_IRWXG, S_IRWXO */
 #include <sys/types.h>                      /* mode_t */
 #include <stdio.h>                          /* printf */
 #include <fcntl.h>                          /* open */
@@ -46,15 +46,14 @@ int main(int argc, char *argv[])
     // res = access(pathname, X_OK);
 //  ==================================================
 
-
-    printf("%03o\n", umask(0));
-    printf("perm: %s\n", filePermStr(umask, 0));
+    u = umask(0);
+    printf("perm: %s\n", filePermStr(u, 0));
 
     if (access(pathname, F_OK) == 0)
         if (unlink(pathname) == -1)
             errMsg("unlink-%s", pathname);
 
-    fd = open(pathname, O_RDWR | O_CREAT);
+    fd = open(pathname, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
 
     if (stat(pathname, &sb) == -1)
         errExit("stat");
@@ -63,12 +62,14 @@ int main(int argc, char *argv[])
     mode = (sb.st_mode | S_IWUSR) & ~S_IROTH;       /* Разрешить владельцу запись, другим пользователям запретить чтение,остальные биты не менять */
     printf("perm: %s\n", filePermStr(mode, 0));
     
-    if (chmod("startup", mode) == -1)
-    errExit("chmod");
+    if (fchmod(fd, mode) == -1)
+        errExit("chmod");
     
     if (stat("startup", &sb) == -1)
         errExit("stat");
     printf("perm: %s\n", filePermStr(sb.st_mode, 0));
+
+    umask(u);
 
     return 0;
 }
