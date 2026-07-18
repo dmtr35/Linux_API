@@ -111,11 +111,12 @@
                 
                 // -----------------------------------
 
+                "15_files/exercises/access_euid.c",
                 // "15_files/01_stat.c",
                 // "15_files/02_utime.c",
                 // "15_files/03_chmod.c",
                 // "15_files/04_access.c",
-                "15_files/05_lsattr.c",
+                // "15_files/05_lsattr.c",
                 // "15_files/file_perms.c",
                 // "15_files/t_chown.c",
                 // "15_files/t_stat.c",

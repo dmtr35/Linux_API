@@ -10,7 +10,7 @@
     pathname, на основе реальных идентификаторов пользователя и группы
     (а также идентификаторов добавочных групп) для процесса. */
 
-//  Возвращает 0, если предоставлены все права доступа, и –1 в противном случае
+//  Возвращает 0, если предоставлены все права доступа, и -1 в противном случае
 //  следует избегеть, есть уязвимость гонки!!
 int access(const char *pathname, int mode);
 /*  Константы mode для системного вызова access()
@@ -40,10 +40,10 @@ int main(int argc, char *argv[])
     mode_t mode;
     int fd;
 
-    // res = access(pathname, F_OK);
-    // res = access(pathname, R_OK);
-    // res = access(pathname, W_OK);
-    // res = access(pathname, X_OK);
+    // res = access("15_files", F_OK);
+    res = access(pathname, R_OK);
+    res = access(pathname, W_OK);
+    res = access(pathname, X_OK);
 //  ==================================================
 
     u = umask(0);

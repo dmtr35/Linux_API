@@ -32,7 +32,7 @@
             // "args": ["-f", "Rr", "/dev/sdb2", "/tmp/testfs"],
             // "args": ["-f", "m", "/testfs", "/tmp/demo"],
             
-            // "args": ["100000", "test_dir2", "1"],
+            "args": ["startup"],
             
             // "args": ["startup"],                                   // 1 аргумент / 2 аргумента
             // "args": ["-tq", "startup", "2024-07-06 16:30:13.666666666", "2024-07-06 16:33:32.111111111"],                // 4 аргумента / 5 аргументов. вместо времени можно написать "-"
@@ -40,7 +40,7 @@
             // "args": ["-s", "startup", "/tmp/rot"],                      // 3 аргумента / 4 аргумента
             // "args": ["-r", "startup", "/tmp/rot"],                         // 3 аргумента / 4 аргумента
             
-            "args": ["-", "30", "startup"],
+            // "args": ["-", "30", "startup"],
 
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
