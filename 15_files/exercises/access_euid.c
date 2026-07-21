@@ -70,8 +70,8 @@ int check_perm(const char *pathname, struct stat *sb, int mode)
     uid_t ruid, euid, suid;
     gid_t rgid, egid, sgid;
 
-    uid_t uid_file = sb->st_uid & 0777;;
-    gid_t gid_file = sb->st_gid & 0777;;
+    uid_t uid_file = sb->st_uid & 0777;
+    gid_t gid_file = sb->st_gid & 0777;
 
     if (mode == R_OK) {
         USR = S_IRUSR;
@@ -113,13 +113,13 @@ int check_perm(const char *pathname, struct stat *sb, int mode)
         }
     }
 }
-реализовать:
-Настоящий access() имеет особое поведение для root.
-Если:
-uid == 0
-то:
-R_OK и W_OK обычно разрешены
-X_OK требует хотя бы одного execute-бита
+// реализовать:
+// Настоящий access() имеет особое поведение для root.
+// Если:
+// uid == 0
+// то:
+// R_OK и W_OK обычно разрешены
+// X_OK требует хотя бы одного execute-бита
 
 int my_access(const char *pathname, int mode)
 {
