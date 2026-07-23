@@ -32,7 +32,8 @@
             // "args": ["-f", "Rr", "/dev/sdb2", "/tmp/testfs"],
             // "args": ["-f", "m", "/testfs", "/tmp/demo"],
             
-            "args": ["startup"],
+            "args": ["-R", "test_dir", "startup", "startup2"],
+            // "args": ["test_dir", "startup", "startup2"],
             
             // "args": ["startup"],                                   // 1 аргумент / 2 аргумента
             // "args": ["-tq", "startup", "2024-07-06 16:30:13.666666666", "2024-07-06 16:33:32.111111111"],                // 4 аргумента / 5 аргументов. вместо времени можно написать "-"

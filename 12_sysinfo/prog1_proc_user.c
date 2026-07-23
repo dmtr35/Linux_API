@@ -1,9 +1,9 @@
-#include <stdio.h>                      /* printf, snprintf */
-#include <dirent.h>                     /* opendir, readdir */
-#include <stdlib.h>                     /* strtol */
-#include <string.h>                     /* strncmp */
-#include "../lib/ugid_functions.h"      /* userIdFromName */
-#include "../lib/error_functions.h"      /* err */
+#include <stdio.h>                              /* printf, snprintf */
+#include <dirent.h>                             /* opendir, readdir */
+#include <stdlib.h>                             /* strtol */
+#include <string.h>                             /* strncmp */
+#include "../lib/ugid_functions.h"              /* userIdFromName */
+#include "../lib/error_functions.h"             /* err */
 
 //  Возвращает описатель потока каталога или NULL при ошибке
 /*  Функция opendir() открывает каталог и возвращает описатель,

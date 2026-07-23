@@ -1,9 +1,9 @@
-#define _GNU_SOURCE                     /* S_IFMT, S_IFREG */
-#include <sys/stat.h>                   /* stat, lstat, fstat */
-#include <stdio.h>                      /* printf */
-#include <sys/stat.h>                   /* open: "S_IRUSR, S_IWUSR" */
-#include <fcntl.h>                      /* open, O_RDONLY */
-#include <unistd.h>                     /* close */
+#define _GNU_SOURCE                             /* S_IFMT, S_IFREG */
+#include <sys/stat.h>                           /* stat, lstat, fstat */
+#include <stdio.h>                              /* printf */
+#include <sys/stat.h>                           /* open: "S_IRUSR, S_IWUSR" */
+#include <fcntl.h>                              /* open, O_RDONLY */
+#include <unistd.h>                             /* close */
 #include "../lib/error_functions.h"
 
 //  Все вызовы возвращают 0 при успешном завершении и -1 при ошибке
@@ -48,16 +48,6 @@ void printf_stat(struct stat *statbuf)
         "time_t", "st_ctime", statbuf->st_ctime       // Время последнего изменения статуса                       st_ctime  : 1781455645             
     );
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

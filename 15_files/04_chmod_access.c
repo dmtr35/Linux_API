@@ -34,11 +34,9 @@ int fchmod(int fd, mode_t mode);
 int main(int argc, char *argv[])
 {
     char *pathname = "startup";
-    int res;
-    mode_t u;
+    int res, fd;
+    mode_t u, mode;;
     struct stat sb;
-    mode_t mode;
-    int fd;
 
     // res = access("15_files", F_OK);
     res = access(pathname, R_OK);

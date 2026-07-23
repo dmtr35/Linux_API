@@ -111,7 +111,9 @@
                 
                 // -----------------------------------
 
-                "15_files/exercises/access_euid.c",
+                // "15_files/exercises/access_euid.c",
+                "15_files/exercises/chmod_X.c",
+                // "15_files/exercises/test.c",
                 // "15_files/01_stat.c",
                 // "15_files/02_utime.c",
                 // "15_files/03_chown.c",

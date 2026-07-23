@@ -1,5 +1,4 @@
 #include <sys/stat.h>
-#include <sys/types.h>
 #include "lib/tlpi_hdr.h"
 #include "lib/error_functions.h"
 
