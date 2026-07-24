@@ -7,7 +7,7 @@
 #include "../lib/error_functions.h"
 #include "../lib/file_perms.h"                          /* Интерфейс для данной реализации */
 
-#define STR_SIZE sizeof("rwxrwxrwx")
+#define STR_SIZE sizeof("drwxrwxrwx")
 
 /*  Константы для битов прав доступа к файлу
     Константа       Восьмеричное значение       Бит прав доступа
@@ -35,7 +35,8 @@ char *filePermStr(mode_t perm, int flags)
 {
     static char str[STR_SIZE];
 
-    snprintf(str, STR_SIZE, "%c%c%c%c%c%c%c%c%c",
+    snprintf(str, STR_SIZE, "%c%c%c%c%c%c%c%c%c%c",
+        (S_ISDIR(perm)) ? 'd' : '-',
         (perm & S_IRUSR) ? 'r' : '-', (perm & S_IWUSR) ? 'w' : '-',
         (perm & S_IXUSR) ?
             (((perm & S_ISUID) && (flags & FP_SPECIAL)) ? 's' : 'x') :
